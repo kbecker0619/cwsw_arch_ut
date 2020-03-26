@@ -25,34 +25,29 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>app</name>
-			<type>2</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/app</locationURI>
-		</link>
-		<link>
 			<name>cfg</name>
 			<type>2</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/cfg</locationURI>
 		</link>
 		<link>
-			<name>cwsw_lib</name>
+			<name>cwsw_event</name>
 			<type>2</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/cwsw_lib</locationURI>
+			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/cwsw_event</locationURI>
+		</link>
+		<link>
+			<name>cwsw_eventqueue</name>
+			<type>2</type>
+			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/cwsw_evqueue</locationURI>
+		</link>
+		<link>
+			<name>cwsw_evqueue_ex</name>
+			<type>2</type>
+			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/cwsw_evqueue_ex</locationURI>
 		</link>
 		<link>
 			<name>doc</name>
 			<type>2</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/doc</locationURI>
-		</link>
-		<link>
-			<name>inc</name>
-			<type>2</type>
-			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/inc</locationURI>
-		</link>
-		<link>
-			<name>src</name>
-			<type>2</type>
-			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/src</locationURI>
+			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/doc</locationURI>
 		</link>
 		<link>
 			<name>ut</name>

@@ -35,11 +35,23 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/56252444/cwsw_event.o \
-	${OBJECTDIR}/_ext/511dfd52/main.o \
-	${OBJECTDIR}/_ext/511dfd52/sim_event_cb.o \
-	${OBJECTDIR}/_ext/f47e93e2/cwsw_lib.o
+	${OBJECTDIR}/_ext/bc57e8e8/cwsw_event.o \
+	${OBJECTDIR}/_ext/bc57e8e8/cwsw_eventtable.o \
+	${OBJECTDIR}/_ext/2d710c0e/cwsw_evqueue.o \
+	${OBJECTDIR}/_ext/e9efbc4e/cwsw_evhandler.o \
+	${OBJECTDIR}/_ext/e9efbc4e/cwsw_evqueue_ex.o \
+	${OBJECTDIR}/_ext/e9efbc4e/cwsw_evthndlrassoc.o
 
+# Test Directory
+TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
+
+# Test Files
+TESTFILES= \
+	${TESTDIR}/TestFiles/f1
+
+# Test Object Files
+TESTOBJECTFILES= \
+	${TESTDIR}/_ext/29de14e/cwsw_event_test.o
 
 # C Compiler Flags
 CFLAGS=
@@ -65,28 +77,140 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/nbproject.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/nbproject ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/56252444/cwsw_event.o: ../../src/cwsw_event.c
-	${MKDIR} -p ${OBJECTDIR}/_ext/56252444
+${OBJECTDIR}/_ext/bc57e8e8/cwsw_event.o: ../../cwsw_event/src/cwsw_event.c
+	${MKDIR} -p ${OBJECTDIR}/_ext/bc57e8e8
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/56252444/cwsw_event.o ../../src/cwsw_event.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/bc57e8e8/cwsw_event.o ../../cwsw_event/src/cwsw_event.c
 
-${OBJECTDIR}/_ext/511dfd52/main.o: ../app/main.c
-	${MKDIR} -p ${OBJECTDIR}/_ext/511dfd52
+${OBJECTDIR}/_ext/bc57e8e8/cwsw_eventtable.o: ../../cwsw_event/src/cwsw_eventtable.c
+	${MKDIR} -p ${OBJECTDIR}/_ext/bc57e8e8
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/511dfd52/main.o ../app/main.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/bc57e8e8/cwsw_eventtable.o ../../cwsw_event/src/cwsw_eventtable.c
 
-${OBJECTDIR}/_ext/511dfd52/sim_event_cb.o: ../app/sim_event_cb.c
-	${MKDIR} -p ${OBJECTDIR}/_ext/511dfd52
+${OBJECTDIR}/_ext/2d710c0e/cwsw_evqueue.o: ../../cwsw_evqueue/src/cwsw_evqueue.c
+	${MKDIR} -p ${OBJECTDIR}/_ext/2d710c0e
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/511dfd52/sim_event_cb.o ../app/sim_event_cb.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2d710c0e/cwsw_evqueue.o ../../cwsw_evqueue/src/cwsw_evqueue.c
 
-${OBJECTDIR}/_ext/f47e93e2/cwsw_lib.o: ../cwsw_lib/src/cwsw_lib.c
-	${MKDIR} -p ${OBJECTDIR}/_ext/f47e93e2
+${OBJECTDIR}/_ext/e9efbc4e/cwsw_evhandler.o: ../../cwsw_evqueue_ex/src/cwsw_evhandler.c
+	${MKDIR} -p ${OBJECTDIR}/_ext/e9efbc4e
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f47e93e2/cwsw_lib.o ../cwsw_lib/src/cwsw_lib.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evhandler.o ../../cwsw_evqueue_ex/src/cwsw_evhandler.c
+
+${OBJECTDIR}/_ext/e9efbc4e/cwsw_evqueue_ex.o: ../../cwsw_evqueue_ex/src/cwsw_evqueue_ex.c
+	${MKDIR} -p ${OBJECTDIR}/_ext/e9efbc4e
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evqueue_ex.o ../../cwsw_evqueue_ex/src/cwsw_evqueue_ex.c
+
+${OBJECTDIR}/_ext/e9efbc4e/cwsw_evthndlrassoc.o: ../../cwsw_evqueue_ex/src/cwsw_evthndlrassoc.c
+	${MKDIR} -p ${OBJECTDIR}/_ext/e9efbc4e
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evthndlrassoc.o ../../cwsw_evqueue_ex/src/cwsw_evthndlrassoc.c
 
 # Subprojects
 .build-subprojects:
+
+# Build Test Targets
+.build-tests-conf: .build-tests-subprojects .build-conf ${TESTFILES}
+.build-tests-subprojects:
+
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/_ext/29de14e/cwsw_event_test.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.c} -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS}   -lcunit 
+
+
+${TESTDIR}/_ext/29de14e/cwsw_event_test.o: ../ut/cwsw_event_test.c 
+	${MKDIR} -p ${TESTDIR}/_ext/29de14e
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/29de14e/cwsw_event_test.o ../ut/cwsw_event_test.c
+
+
+${OBJECTDIR}/_ext/bc57e8e8/cwsw_event_nomain.o: ${OBJECTDIR}/_ext/bc57e8e8/cwsw_event.o ../../cwsw_event/src/cwsw_event.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/bc57e8e8
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/bc57e8e8/cwsw_event.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/bc57e8e8/cwsw_event_nomain.o ../../cwsw_event/src/cwsw_event.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/bc57e8e8/cwsw_event.o ${OBJECTDIR}/_ext/bc57e8e8/cwsw_event_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/bc57e8e8/cwsw_eventtable_nomain.o: ${OBJECTDIR}/_ext/bc57e8e8/cwsw_eventtable.o ../../cwsw_event/src/cwsw_eventtable.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/bc57e8e8
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/bc57e8e8/cwsw_eventtable.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/bc57e8e8/cwsw_eventtable_nomain.o ../../cwsw_event/src/cwsw_eventtable.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/bc57e8e8/cwsw_eventtable.o ${OBJECTDIR}/_ext/bc57e8e8/cwsw_eventtable_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/2d710c0e/cwsw_evqueue_nomain.o: ${OBJECTDIR}/_ext/2d710c0e/cwsw_evqueue.o ../../cwsw_evqueue/src/cwsw_evqueue.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2d710c0e
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/2d710c0e/cwsw_evqueue.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2d710c0e/cwsw_evqueue_nomain.o ../../cwsw_evqueue/src/cwsw_evqueue.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/2d710c0e/cwsw_evqueue.o ${OBJECTDIR}/_ext/2d710c0e/cwsw_evqueue_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/e9efbc4e/cwsw_evhandler_nomain.o: ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evhandler.o ../../cwsw_evqueue_ex/src/cwsw_evhandler.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/e9efbc4e
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evhandler.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evhandler_nomain.o ../../cwsw_evqueue_ex/src/cwsw_evhandler.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evhandler.o ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evhandler_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/e9efbc4e/cwsw_evqueue_ex_nomain.o: ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evqueue_ex.o ../../cwsw_evqueue_ex/src/cwsw_evqueue_ex.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/e9efbc4e
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evqueue_ex.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evqueue_ex_nomain.o ../../cwsw_evqueue_ex/src/cwsw_evqueue_ex.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evqueue_ex.o ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evqueue_ex_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/e9efbc4e/cwsw_evthndlrassoc_nomain.o: ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evthndlrassoc.o ../../cwsw_evqueue_ex/src/cwsw_evthndlrassoc.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/e9efbc4e
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evthndlrassoc.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evthndlrassoc_nomain.o ../../cwsw_evqueue_ex/src/cwsw_evthndlrassoc.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evthndlrassoc.o ${OBJECTDIR}/_ext/e9efbc4e/cwsw_evthndlrassoc_nomain.o;\
+	fi
+
+# Run Test Targets
+.test-conf:
+	@if [ "${TEST}" = "" ]; \
+	then  \
+	    ${TESTDIR}/TestFiles/f1 || true; \
+	else  \
+	    ./${TEST} || true; \
+	fi
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
