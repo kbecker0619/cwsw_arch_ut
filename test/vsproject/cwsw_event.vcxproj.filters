@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
@@ -13,25 +9,64 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Demo App">
+      <UniqueIdentifier>{a9085cbe-125b-4254-b96d-1ee55179967c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Support Libraries">
+      <UniqueIdentifier>{52677f88-26ac-46a8-ae58-97a2d5fbd18d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event Queue">
+      <UniqueIdentifier>{85eb19c8-8ffa-426f-9b9b-7d7f1ff74321}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EV Queue Extended">
+      <UniqueIdentifier>{1b544467-6335-4948-aa42-02e95dd24cd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event">
+      <UniqueIdentifier>{f03568fd-5b22-46f2-810b-da744ee26fbe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\cfg\readme.md" />
     <None Include="..\cwsw_lib\inc\README.md">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="..\libs\cwsw_lib\inc\README.md">
+      <Filter>Support Libraries</Filter>
+    </None>
+    <None Include="..\..\cwsw_evqueue\inc\readme.md">
+      <Filter>Event Queue</Filter>
+    </None>
+    <None Include="..\..\cwsw_evqueue\src\readme.md">
+      <Filter>Event Queue</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\cwsw_event.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\app\sim_event_cb.c">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\app\CritSect.c">
+      <Filter>Demo App</Filter>
     </ClCompile>
     <ClCompile Include="..\app\main.c">
-      <Filter>Source Files</Filter>
+      <Filter>Demo App</Filter>
     </ClCompile>
-    <ClCompile Include="..\cwsw_lib\src\cwsw_lib.c">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\..\cwsw_evqueue_ex\src\cwsw_evhandler.c">
+      <Filter>EV Queue Extended</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cwsw_evqueue_ex\src\cwsw_evqueue_ex.c">
+      <Filter>EV Queue Extended</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cwsw_evqueue_ex\src\cwsw_evthndlrassoc.c">
+      <Filter>EV Queue Extended</Filter>
+    </ClCompile>
+    <ClCompile Include="..\libs\cwsw_lib\src\cwsw_lib.c">
+      <Filter>Support Libraries</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cwsw_event\src\cwsw_event.c">
+      <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cwsw_event\src\cwsw_eventtable.c">
+      <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cwsw_evqueue\src\cwsw_evqueue.c">
+      <Filter>Event Queue</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +93,36 @@
     </ClInclude>
     <ClInclude Include="..\cwsw_lib\inc\ptypes.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cwsw_evqueue_ex\inc\cwsw_evhandler.h">
+      <Filter>EV Queue Extended</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cwsw_evqueue_ex\inc\cwsw_evqueue_ex.h">
+      <Filter>EV Queue Extended</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cwsw_evqueue_ex\inc\cwsw_evthndlrassoc.h">
+      <Filter>EV Queue Extended</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\cwsw_lib\inc\ctassert.h">
+      <Filter>Support Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\cwsw_lib\inc\cwsw_eventsim.h">
+      <Filter>Support Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\cwsw_lib\inc\cwsw_lib.h">
+      <Filter>Support Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\cwsw_lib\inc\ptypes.h">
+      <Filter>Support Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cwsw_event\inc\cwsw_event.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cwsw_event\inc\cwsw_eventtable.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cwsw_evqueue\inc\cwsw_evqueue.h">
+      <Filter>Event Queue</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

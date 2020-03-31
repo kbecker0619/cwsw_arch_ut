@@ -47,10 +47,16 @@ extern "C" {
  */
 enum eTestProjectEvents {
 	evNullEvent = 0,	/**< reserved value, used for initialization */
+	evNotInit,			/**< By CWSW convention, 1 is always "component not initialized" */
+	evAlreadyInit,		/**< BY CWSW convention, 2 is "already initialized" */
+
 	evBtnPressed,		/**< debounced press event */
 	evBtnCommit,
 	evBtReleased,
 	evUiUpdate,
+
+	evTerminateRequested,
+	evQuitRqst,
 	kNumProjectEvqEvents
 };
 

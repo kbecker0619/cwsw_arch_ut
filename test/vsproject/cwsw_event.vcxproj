@@ -54,7 +54,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\cwsw_lib\inc;..\cfg;..\cfg\vs2010;..\..\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\libs\cwsw_lib\inc;..\cfg;..\cfg\vs2010;..\..\cwsw_event\inc;..\..\cwsw_evqueue\inc;..\..\cwsw_evqueue_ex\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAsManaged>false</CompileAsManaged>
       <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
@@ -82,16 +82,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\cwsw_evqueue\inc\readme.md" />
+    <None Include="..\..\cwsw_evqueue\src\readme.md" />
     <None Include="..\cfg\readme.md" />
     <None Include="..\cwsw_lib\inc\README.md" />
+    <None Include="..\libs\cwsw_lib\inc\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\cwsw_event.c" />
+    <ClCompile Include="..\..\cwsw_event\src\cwsw_event.c" />
+    <ClCompile Include="..\..\cwsw_event\src\cwsw_eventtable.c" />
+    <ClCompile Include="..\..\cwsw_evqueue\src\cwsw_evqueue.c" />
+    <ClCompile Include="..\..\cwsw_evqueue_ex\src\cwsw_evhandler.c" />
+    <ClCompile Include="..\..\cwsw_evqueue_ex\src\cwsw_evqueue_ex.c" />
+    <ClCompile Include="..\..\cwsw_evqueue_ex\src\cwsw_evthndlrassoc.c" />
+    <ClCompile Include="..\app\CritSect.c" />
     <ClCompile Include="..\app\main.c" />
-    <ClCompile Include="..\app\sim_event_cb.c" />
-    <ClCompile Include="..\cwsw_lib\src\cwsw_lib.c" />
+    <ClCompile Include="..\libs\cwsw_lib\src\cwsw_lib.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\cwsw_event\inc\cwsw_event.h" />
+    <ClInclude Include="..\..\cwsw_event\inc\cwsw_eventtable.h" />
+    <ClInclude Include="..\..\cwsw_evqueue\inc\cwsw_evqueue.h" />
+    <ClInclude Include="..\..\cwsw_evqueue_ex\inc\cwsw_evhandler.h" />
+    <ClInclude Include="..\..\cwsw_evqueue_ex\inc\cwsw_evqueue_ex.h" />
+    <ClInclude Include="..\..\cwsw_evqueue_ex\inc\cwsw_evthndlrassoc.h" />
     <ClInclude Include="..\..\inc\cwsw_event.h" />
     <ClInclude Include="..\cfg\cwsw_event_proj.h" />
     <ClInclude Include="..\cfg\projcfg.h" />
@@ -100,6 +114,10 @@
     <ClInclude Include="..\cwsw_lib\inc\cwsw_eventsim.h" />
     <ClInclude Include="..\cwsw_lib\inc\cwsw_lib.h" />
     <ClInclude Include="..\cwsw_lib\inc\ptypes.h" />
+    <ClInclude Include="..\libs\cwsw_lib\inc\ctassert.h" />
+    <ClInclude Include="..\libs\cwsw_lib\inc\cwsw_eventsim.h" />
+    <ClInclude Include="..\libs\cwsw_lib\inc\cwsw_lib.h" />
+    <ClInclude Include="..\libs\cwsw_lib\inc\ptypes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
