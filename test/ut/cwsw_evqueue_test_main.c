@@ -1,23 +1,29 @@
 /*
- * File:   cwsw_event_test.c
+ * File:   cwsw_event_test_main.c
  * Author: kevin
  *
  * Created on Mar 23, 2020, 8:32:20 PM
+ *
+ * This is the main driver for the Unit Tests of the Event Queue set of components.
+ * Each component has its own CUnit suite, and its own set of UT files.
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <CUnit/Basic.h>
 
-/*
- * CUnit Test Suite
+/* CUnit Test Suite
  */
 
+/* Initialize all test suites
+ */
 int init_suite(void)
 {
     return 0;
 }
 
+/* Clean all test suites
+ */
 int clean_suite(void)
 {
     return 0;
@@ -56,7 +62,7 @@ void testCwsw_EvT__Get_Initialized()
     }
 }
 
-int main()
+int main(int argc, char **argv)
 {
     CU_pSuite pSuite = NULL;
 

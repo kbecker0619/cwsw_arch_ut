@@ -42,7 +42,7 @@ Contributor(s):
     <type>org.netbeans.modules.cnd.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>EvQ Demo App</name>
+            <name>Event Queue</name>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
@@ -51,6 +51,7 @@ Contributor(s):
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>../ut</sourceRootElem>
+                <sourceRootElem>../libs/cwsw_lib</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

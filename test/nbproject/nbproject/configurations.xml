@@ -89,12 +89,99 @@ Contributor(s):
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
-                   displayName="Resource Files"
+                   displayName="Dependencies"
                    projectFiles="true">
+      <logicalFolder name="cwsw_lib" displayName="cwsw_lib" projectFiles="true">
+        <logicalFolder name="doc" displayName="doc" projectFiles="true">
+          <logicalFolder name="design" displayName="design" projectFiles="true">
+            <itemPath>../libs/cwsw_lib/doc/design/cwsw_lib.md</itemPath>
+            <itemPath>../libs/cwsw_lib/doc/design/cwsw_lib_design.md</itemPath>
+            <itemPath>../libs/cwsw_lib/doc/design/cwsw_lib_intro.dox</itemPath>
+          </logicalFolder>
+          <logicalFolder name="doc_core" displayName="doc_core" projectFiles="true">
+            <itemPath>../libs/cwsw_lib/doc/doc_core/.gitignore</itemPath>
+            <itemPath>../libs/cwsw_lib/doc/doc_core/Doxy_Layout.xml</itemPath>
+            <itemPath>../libs/cwsw_lib/doc/doc_core/LICENSE</itemPath>
+            <itemPath>../libs/cwsw_lib/doc/doc_core/README.md</itemPath>
+            <itemPath>../libs/cwsw_lib/doc/doc_core/cwsw.doxyfile</itemPath>
+            <itemPath>../libs/cwsw_lib/doc/doc_core/cwswnavtree.css</itemPath>
+            <itemPath>../libs/cwsw_lib/doc/doc_core/cwswstylesheet.css</itemPath>
+            <itemPath>../libs/cwsw_lib/doc/doc_core/cwswtabs.css</itemPath>
+          </logicalFolder>
+          <logicalFolder name="images" displayName="images" projectFiles="true">
+            <itemPath>../libs/cwsw_lib/doc/images/README.md</itemPath>
+          </logicalFolder>
+          <logicalFolder name="SM_Engine_Zimminess"
+                         displayName="SM_Engine_Zimminess"
+                         projectFiles="true">
+            <logicalFolder name="Home" displayName="Home" projectFiles="true">
+              <logicalFolder name="Workspace_Setup"
+                             displayName="Workspace_Setup"
+                             projectFiles="true">
+                <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home/Workspace_Setup/Cygwin_Home_Folder.txt</itemPath>
+                <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home/Workspace_Setup/GIT_Setup.txt</itemPath>
+              </logicalFolder>
+              <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home/Architecture_Setup.txt</itemPath>
+              <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home/GIT_Repo_Setup.txt</itemPath>
+              <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home/Workspace_Setup.txt</itemPath>
+            </logicalFolder>
+            <logicalFolder name="Journal" displayName="Journal" projectFiles="true">
+              <logicalFolder name="2017" displayName="2017" projectFiles="true">
+                <logicalFolder name="12" displayName="12" projectFiles="true">
+                  <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2017/12/23.txt</itemPath>
+                </logicalFolder>
+              </logicalFolder>
+              <logicalFolder name="2018" displayName="2018" projectFiles="true">
+                <logicalFolder name="01" displayName="01" projectFiles="true">
+                  <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/01/.gitignore</itemPath>
+                  <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/01/03.txt</itemPath>
+                  <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/01/09.txt</itemPath>
+                  <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/01/21.txt</itemPath>
+                </logicalFolder>
+                <logicalFolder name="02" displayName="02" projectFiles="true">
+                  <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/02/03.txt</itemPath>
+                  <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/02/10.txt</itemPath>
+                  <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/02/21.txt</itemPath>
+                  <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/02/s32ds_arm_installed_software.txt</itemPath>
+                </logicalFolder>
+              </logicalFolder>
+            </logicalFolder>
+            <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home.txt</itemPath>
+            <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/notebook.zim</itemPath>
+            <itemPath>../libs/cwsw_lib/doc/SM_Engine_Zimminess/state_machine-1.jpg</itemPath>
+          </logicalFolder>
+          <logicalFolder name="srs" displayName="srs" projectFiles="true">
+            <itemPath>../libs/cwsw_lib/doc/srs/cwsw_lib_srs.dox</itemPath>
+            <itemPath>../libs/cwsw_lib/doc/srs/cwsw_lib_srs.md</itemPath>
+            <itemPath>../libs/cwsw_lib/doc/srs/cwsw_lib_srs.xlsm</itemPath>
+            <itemPath>../libs/cwsw_lib/doc/srs/cwsw_lib_srs.xlsx</itemPath>
+          </logicalFolder>
+          <itemPath>../libs/cwsw_lib/doc/.gitignore</itemPath>
+          <itemPath>../libs/cwsw_lib/doc/README.md</itemPath>
+          <itemPath>../libs/cwsw_lib/doc/cwsw_lib.doxyfile</itemPath>
+          <itemPath>../libs/cwsw_lib/doc/cwsw_lib_integration.dox</itemPath>
+        </logicalFolder>
+        <logicalFolder name="inc" displayName="inc" projectFiles="true">
+          <itemPath>../libs/cwsw_lib/inc/README.md</itemPath>
+          <itemPath>../libs/cwsw_lib/inc/ctassert.h</itemPath>
+          <itemPath>../libs/cwsw_lib/inc/cwsw_eventsim.h</itemPath>
+          <itemPath>../libs/cwsw_lib/inc/cwsw_lib.h</itemPath>
+          <itemPath>../libs/cwsw_lib/inc/ptypes.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="src" displayName="src" projectFiles="true">
+          <itemPath>../libs/cwsw_lib/src/cwsw_lib.c</itemPath>
+        </logicalFolder>
+        <itemPath>../libs/cwsw_lib/.gitignore</itemPath>
+        <itemPath>../libs/cwsw_lib/.gitmodules</itemPath>
+        <itemPath>../libs/cwsw_lib/LICENSE</itemPath>
+        <itemPath>../libs/cwsw_lib/README.md</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>../app/CritSect.c</itemPath>
+      <itemPath>../app/main.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -105,16 +192,38 @@ Contributor(s):
                    displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f4"
+                     displayName="Event Queue Extended Test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>../ut/tests/cwsw_evhandler_test.c</itemPath>
+        <itemPath>../ut/tests/cwsw_evqueue_ex_test.c</itemPath>
+        <itemPath>../ut/tests/cwsw_evthndlrassoc_test.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2"
+                     displayName="Event Queue Test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>../ut/tests/cwsw_evqueue_test.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3"
+                     displayName="Event Table Test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>../ut/tests/cwsw_eventtable_test.c</itemPath>
+      </logicalFolder>
       <logicalFolder name="f1"
                      displayName="Event Test"
                      projectFiles="true"
                      kind="TEST">
-        <itemPath>../ut/cwsw_event_test.c</itemPath>
+        <itemPath>../ut/tests/cwsw_event_test.c</itemPath>
+        <itemPath>../ut/cwsw_evqueue_test_main.c</itemPath>
       </logicalFolder>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
     <Elem>../ut</Elem>
+    <Elem>../libs/cwsw_lib</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -126,15 +235,18 @@ Contributor(s):
       </toolsSet>
       <compileType>
         <cTool>
+          <standard>10</standard>
           <incDir>
             <pElem>../cfg</pElem>
             <pElem>../../cwsw_event/inc</pElem>
             <pElem>../../cwsw_evqueue/inc</pElem>
             <pElem>../../cwsw_evqueue_ex/inc</pElem>
+            <pElem>../libs/cwsw_lib/inc</pElem>
           </incDir>
           <preprocessorList>
             <Elem>XPRJ_NB_${CND_CONF}=1</Elem>
           </preprocessorList>
+          <warningLevel>2</warningLevel>
         </cTool>
       </compileType>
       <item path="../../cwsw_event/doc/readme.md" ex="false" tool="3" flavor2="0">
@@ -206,11 +318,256 @@ Contributor(s):
             tool="0"
             flavor2="0">
       </item>
-      <item path="../ut/cwsw_event_test.c" ex="false" tool="0" flavor2="0">
+      <item path="../app/CritSect.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../app/main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/.gitignore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/.gitmodules" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/LICENSE" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/README.md" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/.gitignore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/README.md" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home/Architecture_Setup.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home/GIT_Repo_Setup.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home/Workspace_Setup.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home/Workspace_Setup/Cygwin_Home_Folder.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home/Workspace_Setup/GIT_Setup.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2017/12/23.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/01/.gitignore"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/01/03.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/01/09.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/01/21.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/02/03.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/02/10.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/02/21.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/02/s32ds_arm_installed_software.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/notebook.zim"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/state_machine-1.jpg"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/cwsw_lib.doxyfile"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/cwsw_lib_integration.dox"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/design/cwsw_lib.md"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/design/cwsw_lib_design.md"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/design/cwsw_lib_intro.dox"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/doc_core/.gitignore"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/doc_core/Doxy_Layout.xml"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/doc_core/LICENSE"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/doc_core/README.md"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/doc_core/cwsw.doxyfile"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/doc_core/cwswnavtree.css"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/doc_core/cwswstylesheet.css"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/doc_core/cwswtabs.css"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/images/README.md"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/srs/cwsw_lib_srs.dox"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/srs/cwsw_lib_srs.md"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/srs/cwsw_lib_srs.xlsm"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/srs/cwsw_lib_srs.xlsx"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/inc/README.md" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/inc/ctassert.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/inc/cwsw_eventsim.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/inc/cwsw_lib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/inc/ptypes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/src/cwsw_lib.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../ut/cwsw_evqueue_test_main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../ut/tests/cwsw_event_test.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../ut/tests/cwsw_eventtable_test.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../ut/tests/cwsw_evhandler_test.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../ut/tests/cwsw_evqueue_ex_test.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../ut/tests/cwsw_evqueue_test.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../ut/tests/cwsw_evthndlrassoc_test.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
       </item>
       <folder path="TestFiles/f1">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f4">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
@@ -306,11 +663,256 @@ Contributor(s):
             tool="0"
             flavor2="0">
       </item>
-      <item path="../ut/cwsw_event_test.c" ex="false" tool="0" flavor2="0">
+      <item path="../app/CritSect.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../app/main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/.gitignore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/.gitmodules" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/LICENSE" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/README.md" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/.gitignore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/README.md" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home/Architecture_Setup.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home/GIT_Repo_Setup.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home/Workspace_Setup.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home/Workspace_Setup/Cygwin_Home_Folder.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Home/Workspace_Setup/GIT_Setup.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2017/12/23.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/01/.gitignore"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/01/03.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/01/09.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/01/21.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/02/03.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/02/10.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/02/21.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/Journal/2018/02/s32ds_arm_installed_software.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/notebook.zim"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/SM_Engine_Zimminess/state_machine-1.jpg"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/cwsw_lib.doxyfile"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/cwsw_lib_integration.dox"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/design/cwsw_lib.md"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/design/cwsw_lib_design.md"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/design/cwsw_lib_intro.dox"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/doc_core/.gitignore"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/doc_core/Doxy_Layout.xml"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/doc_core/LICENSE"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/doc_core/README.md"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/doc_core/cwsw.doxyfile"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/doc_core/cwswnavtree.css"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/doc_core/cwswstylesheet.css"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/doc_core/cwswtabs.css"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/images/README.md"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/srs/cwsw_lib_srs.dox"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/srs/cwsw_lib_srs.md"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/srs/cwsw_lib_srs.xlsm"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/doc/srs/cwsw_lib_srs.xlsx"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/inc/README.md" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/inc/ctassert.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/inc/cwsw_eventsim.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/inc/cwsw_lib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/inc/ptypes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../libs/cwsw_lib/src/cwsw_lib.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../ut/cwsw_evqueue_test_main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../ut/tests/cwsw_event_test.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../ut/tests/cwsw_eventtable_test.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../ut/tests/cwsw_evhandler_test.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../ut/tests/cwsw_evqueue_ex_test.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../ut/tests/cwsw_evqueue_test.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../ut/tests/cwsw_evthndlrassoc_test.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
       </item>
       <folder path="TestFiles/f1">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f4">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
