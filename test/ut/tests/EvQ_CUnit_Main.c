@@ -30,7 +30,10 @@ extern void cb_event_demo_cs_leave(int protlvl, const char* const filename, cons
 /* CUnit function prototypes */
 extern void testCwsw_Evt__Init();
 extern void testCwsw_EvT__Deinit();
-
+extern void testCwsw_Evt__InitEventTable_badparams();
+extern void testCwsw_Evt__InitEventTable_goodparams();
+extern void testCwsw_Evt__GetEventPtr_badparams();
+extern void testCwsw_Evt__GetEventPtr_goodparams();
 
 
 int init_suite(void)
@@ -100,11 +103,17 @@ int main()
     }
 
     /* Add the tests to the suite */
-    if( (NULL == CU_add_test(pSuite, "testCb_event_demo_cs_enter", testCb_event_demo_cs_enter)) ||
-        (NULL == CU_add_test(pSuite, "testCb_event_demo_cs_leave", testCb_event_demo_cs_leave)) ||
+    if( (NULL == CU_add_test(pSuite, "testCb_event_demo_cs_enter", testCb_event_demo_cs_enter))                             ||
+        (NULL == CU_add_test(pSuite, "testCb_event_demo_cs_leave", testCb_event_demo_cs_leave))                             ||
         /* add Event component unit tests */
-        (NULL == CU_add_test(pSuite, "testCwsw_Evt__Init",      testCwsw_Evt__Init)) ||
-        (NULL == CU_add_test(pSuite, "testCwsw_EvT__Deinit",    testCwsw_EvT__Deinit))
+        (NULL == CU_add_test(pSuite, "testCwsw_Evt__Init",      testCwsw_Evt__Init))                                        ||
+        (NULL == CU_add_test(pSuite, "testCwsw_EvT__Deinit",    testCwsw_EvT__Deinit))                                      ||
+        /* Event Table unit tests */
+        (NULL == CU_add_test(pSuite, "testCwsw_Evt__InitEventTable_badparams",  testCwsw_Evt__InitEventTable_badparams))    ||
+        (NULL == CU_add_test(pSuite, "testCwsw_Evt__InitEventTable_goodparams", testCwsw_Evt__InitEventTable_goodparams))	||
+		(NULL == CU_add_test(pSuite, "testCwsw_Evt__GetEventPtr_badparams",		testCwsw_Evt__GetEventPtr_badparams))		||
+		(NULL == CU_add_test(pSuite, "testCwsw_Evt__GetEventPtr_goodparams",	testCwsw_Evt__GetEventPtr_goodparams))
+		
     ) {
         CU_cleanup_registry();
         return CU_get_error();

@@ -64,8 +64,8 @@
 tErrorCodes_EvQ
 Cwsw_Evt__InitEventTable(
 	ptEvQ_EvTable pEvQTable,	// Event Queue table.
-	ptEvQ_Event pTable,		// table of events.
-	size_t TableSize)		// size of the event table. the benefit of passing as unsigned, is that we don't have to worry about negative values.
+	ptEvQ_Event pTable,			// table of events.
+	size_t TableSize)			// size of the event table. the benefit of passing as unsigned, is that we don't have to worry about negative values.
 {
 	if(!pEvQTable)			return kErr_EvQ_BadParm;
 	if(!pTable)				return kErr_EvQ_BadParm;
@@ -80,11 +80,13 @@ Cwsw_Evt__InitEventTable(
 
 
 /**	Return the address of a specified event in the event buffer.
+ *  This function is intended to be used once you know which entry in the event buffer you want to
+ *  access.
  *
  *	@param[in]	pEvTbl	Event table control structure.
  *	@param[in]	hnd		base-0 handle, used as an index into the event buffer.
  *
- *	@return	address of the specified event.
+ *	@returns	address of the specified event.
  *
  *	@ingroup tEvq_EvTable
  */
