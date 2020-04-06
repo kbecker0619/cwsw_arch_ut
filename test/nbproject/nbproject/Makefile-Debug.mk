@@ -50,20 +50,12 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
 # Test Files
 TESTFILES= \
-	${TESTDIR}/TestFiles/f4 \
-	${TESTDIR}/TestFiles/f2 \
-	${TESTDIR}/TestFiles/f3 \
-	${TESTDIR}/TestFiles/f1
+	${TESTDIR}/TestFiles/f5
 
 # Test Object Files
 TESTOBJECTFILES= \
-	${TESTDIR}/_ext/29de14e/cwsw_evqueue_test_main.o \
-	${TESTDIR}/_ext/a7dd4220/cwsw_event_test.o \
-	${TESTDIR}/_ext/a7dd4220/cwsw_eventtable_test.o \
-	${TESTDIR}/_ext/a7dd4220/cwsw_evhandler_test.o \
-	${TESTDIR}/_ext/a7dd4220/cwsw_evqueue_ex_test.o \
-	${TESTDIR}/_ext/a7dd4220/cwsw_evqueue_test.o \
-	${TESTDIR}/_ext/a7dd4220/cwsw_evthndlrassoc_test.o
+	${TESTDIR}/_ext/a7dd4220/EvQ_CUnit_Main.o \
+	${TESTDIR}/_ext/a7dd4220/cwsw_event_test.o
 
 # C Compiler Flags
 CFLAGS=
@@ -141,63 +133,21 @@ ${OBJECTDIR}/_ext/4ccfc345/cwsw_lib.o: ../libs/cwsw_lib/src/cwsw_lib.c
 .build-tests-conf: .build-tests-subprojects .build-conf ${TESTFILES}
 .build-tests-subprojects:
 
-${TESTDIR}/TestFiles/f4: ${TESTDIR}/_ext/a7dd4220/cwsw_evhandler_test.o ${TESTDIR}/_ext/a7dd4220/cwsw_evqueue_ex_test.o ${TESTDIR}/_ext/a7dd4220/cwsw_evthndlrassoc_test.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f5: ${TESTDIR}/_ext/a7dd4220/EvQ_CUnit_Main.o ${TESTDIR}/_ext/a7dd4220/cwsw_event_test.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.c} -o ${TESTDIR}/TestFiles/f4 $^ ${LDLIBSOPTIONS}   -lcunit 
-
-${TESTDIR}/TestFiles/f2: ${TESTDIR}/_ext/a7dd4220/cwsw_evqueue_test.o ${OBJECTFILES:%.o=%_nomain.o}
-	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.c} -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS}   -lcunit 
-
-${TESTDIR}/TestFiles/f3: ${TESTDIR}/_ext/a7dd4220/cwsw_eventtable_test.o ${OBJECTFILES:%.o=%_nomain.o}
-	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.c} -o ${TESTDIR}/TestFiles/f3 $^ ${LDLIBSOPTIONS}   -lcunit 
-
-${TESTDIR}/TestFiles/f1: ${TESTDIR}/_ext/a7dd4220/cwsw_event_test.o ${TESTDIR}/_ext/29de14e/cwsw_evqueue_test_main.o ${OBJECTFILES:%.o=%_nomain.o}
-	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.c} -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS}   -lcunit 
+	${LINK.c} -o ${TESTDIR}/TestFiles/f5 $^ ${LDLIBSOPTIONS}   -lcunit 
 
 
-${TESTDIR}/_ext/a7dd4220/cwsw_evhandler_test.o: ../ut/tests/cwsw_evhandler_test.c 
+${TESTDIR}/_ext/a7dd4220/EvQ_CUnit_Main.o: ../ut/tests/EvQ_CUnit_Main.c 
 	${MKDIR} -p ${TESTDIR}/_ext/a7dd4220
 	${RM} "$@.d"
-	$(COMPILE.c) -g -Wall -DXPRJ_NB_${CND_CONF}=1 -I../cfg -I../../cwsw_event/inc -I../../cwsw_evqueue/inc -I../../cwsw_evqueue_ex/inc -I../libs/cwsw_lib/inc -std=c11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/a7dd4220/cwsw_evhandler_test.o ../ut/tests/cwsw_evhandler_test.c
-
-
-${TESTDIR}/_ext/a7dd4220/cwsw_evqueue_ex_test.o: ../ut/tests/cwsw_evqueue_ex_test.c 
-	${MKDIR} -p ${TESTDIR}/_ext/a7dd4220
-	${RM} "$@.d"
-	$(COMPILE.c) -g -Wall -DXPRJ_NB_${CND_CONF}=1 -I../cfg -I../../cwsw_event/inc -I../../cwsw_evqueue/inc -I../../cwsw_evqueue_ex/inc -I../libs/cwsw_lib/inc -std=c11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/a7dd4220/cwsw_evqueue_ex_test.o ../ut/tests/cwsw_evqueue_ex_test.c
-
-
-${TESTDIR}/_ext/a7dd4220/cwsw_evthndlrassoc_test.o: ../ut/tests/cwsw_evthndlrassoc_test.c 
-	${MKDIR} -p ${TESTDIR}/_ext/a7dd4220
-	${RM} "$@.d"
-	$(COMPILE.c) -g -Wall -DXPRJ_NB_${CND_CONF}=1 -I../cfg -I../../cwsw_event/inc -I../../cwsw_evqueue/inc -I../../cwsw_evqueue_ex/inc -I../libs/cwsw_lib/inc -std=c11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/a7dd4220/cwsw_evthndlrassoc_test.o ../ut/tests/cwsw_evthndlrassoc_test.c
-
-
-${TESTDIR}/_ext/a7dd4220/cwsw_evqueue_test.o: ../ut/tests/cwsw_evqueue_test.c 
-	${MKDIR} -p ${TESTDIR}/_ext/a7dd4220
-	${RM} "$@.d"
-	$(COMPILE.c) -g -Wall -DXPRJ_NB_${CND_CONF}=1 -I../cfg -I../../cwsw_event/inc -I../../cwsw_evqueue/inc -I../../cwsw_evqueue_ex/inc -I../libs/cwsw_lib/inc -std=c11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/a7dd4220/cwsw_evqueue_test.o ../ut/tests/cwsw_evqueue_test.c
-
-
-${TESTDIR}/_ext/a7dd4220/cwsw_eventtable_test.o: ../ut/tests/cwsw_eventtable_test.c 
-	${MKDIR} -p ${TESTDIR}/_ext/a7dd4220
-	${RM} "$@.d"
-	$(COMPILE.c) -g -Wall -DXPRJ_NB_${CND_CONF}=1 -I../cfg -I../../cwsw_event/inc -I../../cwsw_evqueue/inc -I../../cwsw_evqueue_ex/inc -I../libs/cwsw_lib/inc -std=c11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/a7dd4220/cwsw_eventtable_test.o ../ut/tests/cwsw_eventtable_test.c
+	$(COMPILE.c) -g -Wall -DXPRJ_NB_${CND_CONF}=1 -I../cfg -I../../cwsw_event/inc -I../../cwsw_evqueue/inc -I../../cwsw_evqueue_ex/inc -I../libs/cwsw_lib/inc -std=c11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/a7dd4220/EvQ_CUnit_Main.o ../ut/tests/EvQ_CUnit_Main.c
 
 
 ${TESTDIR}/_ext/a7dd4220/cwsw_event_test.o: ../ut/tests/cwsw_event_test.c 
 	${MKDIR} -p ${TESTDIR}/_ext/a7dd4220
 	${RM} "$@.d"
 	$(COMPILE.c) -g -Wall -DXPRJ_NB_${CND_CONF}=1 -I../cfg -I../../cwsw_event/inc -I../../cwsw_evqueue/inc -I../../cwsw_evqueue_ex/inc -I../libs/cwsw_lib/inc -std=c11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/a7dd4220/cwsw_event_test.o ../ut/tests/cwsw_event_test.c
-
-
-${TESTDIR}/_ext/29de14e/cwsw_evqueue_test_main.o: ../ut/cwsw_evqueue_test_main.c 
-	${MKDIR} -p ${TESTDIR}/_ext/29de14e
-	${RM} "$@.d"
-	$(COMPILE.c) -g -Wall -DXPRJ_NB_${CND_CONF}=1 -I../cfg -I../../cwsw_event/inc -I../../cwsw_evqueue/inc -I../../cwsw_evqueue_ex/inc -I../libs/cwsw_lib/inc -std=c11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/29de14e/cwsw_evqueue_test_main.o ../ut/cwsw_evqueue_test_main.c
 
 
 ${OBJECTDIR}/_ext/bc57e8e8/cwsw_event_nomain.o: ${OBJECTDIR}/_ext/bc57e8e8/cwsw_event.o ../../cwsw_event/src/cwsw_event.c 
@@ -321,10 +271,7 @@ ${OBJECTDIR}/_ext/4ccfc345/cwsw_lib_nomain.o: ${OBJECTDIR}/_ext/4ccfc345/cwsw_li
 .test-conf:
 	@if [ "${TEST}" = "" ]; \
 	then  \
-	    ${TESTDIR}/TestFiles/f4 || true; \
-	    ${TESTDIR}/TestFiles/f2 || true; \
-	    ${TESTDIR}/TestFiles/f3 || true; \
-	    ${TESTDIR}/TestFiles/f1 || true; \
+	    ${TESTDIR}/TestFiles/f5 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

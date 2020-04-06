@@ -62,7 +62,7 @@ void testCwsw_EvT__Get_Initialized()
     }
 }
 
-int main(int argc, char **argv)
+int main(void)
 {
     CU_pSuite pSuite = NULL;
 
