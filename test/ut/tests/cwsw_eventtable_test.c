@@ -26,7 +26,7 @@ void testCwsw_Evt__InitEventTable_badparams()
     CU_ASSERT_EQUAL(result, kErr_EvQ_BadParm);
     result = Cwsw_Evt__InitEventTable(&evTbl, NULL, TABLE_SIZE(my_table_of_events));
     CU_ASSERT_EQUAL(result, kErr_EvQ_BadParm);
-    result = Cwsw_Evt__InitEventTable(&evTbl, my_table_of_events, INT_MAX + 1);
+    result = Cwsw_Evt__InitEventTable(&evTbl, my_table_of_events, ((size_t)INT_MAX + 1));
     CU_ASSERT_EQUAL(result, kErr_EvQ_BadParm);
 }
 
@@ -99,28 +99,96 @@ void testCwsw_Evt__GetEventPtr_goodparams()
 	CU_ASSERT_PTR_EQUAL(pEv, &my_table_of_events[1]);
 }
 
-void testCwsw_Evt__GetEvent()
+void testCwsw_Evt__GetEvent_badparams()
 {
-    ptEvQ_Event pEv;
-    ptEvQ_EvTable pEvTb;
-    tEvQ_EvtHandle hnd;
-    tErrorCodes_EvQ result = Cwsw_Evt__GetEvent(pEv, pEvTb, hnd);
-    if (1 /*check result*/)
-    {
-        CU_ASSERT(0);
-    }
+    /* because they're function-local, these data disappear once this function ends */
+	tEvQ_Event my_table_of_events[] = {
+		{ 0, 100 }, { 1, 101 }, { 2, 102 }, { 3, 103 }, { 4, 204 },
+		{ 5, 205 }, { 6, 206 }, { 7, 207 }, { 8, 414 }, { 9, 415 },
+	};
+	tEvQ_EvTable evTbl = {0};
+    tEvQ_Event ev = {0};
+    tErrorCodes_EvQ result;
+
+	// no event
+	result = Cwsw_Evt__GetEvent(NULL, &evTbl, 1);
+	CU_ASSERT_EQUAL(result, kErr_EvQ_BadParm);
+	// no event table
+    result = Cwsw_Evt__GetEvent(&ev, NULL, 1);
+	CU_ASSERT_EQUAL(result, kErr_EvQ_BadParm);
+	// bad event buffer. note we're still not initialized.
+	evTbl.szEvTbl = 2;
+	result = Cwsw_Evt__GetEvent(&ev, &evTbl, 1);
+	CU_ASSERT_EQUAL(result, kErr_EvQ_BadEvent);
+
+	// bad handle
+	CU_ASSERT_EQUAL(Cwsw_Evt__InitEventTable(&evTbl, my_table_of_events, TABLE_SIZE(my_table_of_events)), kErr_EvQ_NoError);
+    result = Cwsw_Evt__GetEvent(&ev, &evTbl, TABLE_SIZE(my_table_of_events) + 1);
+	CU_ASSERT_EQUAL(result, kErr_EvQ_BadTable);
 }
 
-tErrorCodes_EvQ Cwsw_Evt__PutEvent(ptEvQ_EvTable pEvTb, tEvQ_EvtHandle hnd, ptEvQ_Event pEv);
-
-void testCwsw_Evt__PutEvent()
+void testCwsw_Evt__GetEvent_goodparams()
 {
-    ptEvQ_EvTable pEvTb;
-    tEvQ_EvtHandle hnd;
-    ptEvQ_Event pEv;
-    tErrorCodes_EvQ result = Cwsw_Evt__PutEvent(pEvTb, hnd, pEv);
-    if (1 /*check result*/)
-    {
-        CU_ASSERT(0);
-    }
+    /* because they're function-local, these data disappear once this function ends */
+	tEvQ_Event my_table_of_events[] = {
+		{ 0, 100 }, { 1, 101 }, { 2, 102 }, { 3, 103 }, { 4, 204 },
+		{ 5, 205 }, { 6, 206 }, { 7, 207 }, { 8, 414 }, { 9, 415 },
+	};
+	tEvQ_EvTable evTbl = {0};
+    tEvQ_Event ev = {0};
+    tErrorCodes_EvQ result;
+
+	CU_ASSERT_EQUAL(Cwsw_Evt__InitEventTable(&evTbl, my_table_of_events, TABLE_SIZE(my_table_of_events)), kErr_EvQ_NoError);
+	/* for totally arbitrary reasons, pick the 7th slot in the table and see what we get back */
+    result = Cwsw_Evt__GetEvent(&ev, &evTbl, 7);
+	CU_ASSERT_EQUAL(result, kErr_EvQ_NoError);
+	CU_ASSERT_EQUAL(ev.evId, 7);
+	CU_ASSERT_EQUAL(ev.evData, 207);
+}
+
+
+void testCwsw_Evt__PutEvent_badparams()
+{
+    /* because they're function-local, these data disappear once this function ends */
+	tEvQ_Event my_table_of_events[] = {
+		{ 0, 100 }, { 1, 101 }, { 2, 102 }, { 3, 103 }, { 4, 204 },
+		{ 5, 205 }, { 6, 206 }, { 7, 207 }, { 8, 414 }, { 9, 415 },
+	};
+	tEvQ_EvTable evTbl = {0};
+    tEvQ_Event ev = {0};
+    tErrorCodes_EvQ result;
+
+	// no event table
+	result = Cwsw_Evt__PutEvent(NULL, 1, &ev);
+	CU_ASSERT_EQUAL(result, kErr_EvQ_BadParm);
+	// no event
+    result = Cwsw_Evt__PutEvent(&evTbl, 1, NULL);
+	CU_ASSERT_EQUAL(result, kErr_EvQ_BadParm);
+	// bad event buffer. note we're still not initialized.
+	evTbl.szEvTbl = 2;
+    result = Cwsw_Evt__PutEvent(&evTbl, 1, &ev);
+	CU_ASSERT_EQUAL(result, kErr_EvQ_BadEvBuffer);
+
+	// bad handle
+	CU_ASSERT_EQUAL(Cwsw_Evt__InitEventTable(&evTbl, my_table_of_events, TABLE_SIZE(my_table_of_events)), kErr_EvQ_NoError);
+    result = Cwsw_Evt__PutEvent(&evTbl, TABLE_SIZE(my_table_of_events) + 1, &ev);
+	CU_ASSERT_EQUAL(result, kErr_EvQ_BadTable);
+}
+
+void testCwsw_Evt__PutEvent_goodparams()
+{
+    /* because they're function-local, these data disappear once this function ends */
+	tEvQ_Event my_table_of_events[] = {
+		{ 0, 100 }, { 1, 101 }, { 2, 102 }, { 3, 103 }, { 4, 204 },
+		{ 5, 205 }, { 6, 206 }, { 7, 207 }, { 8, 414 }, { 9, 415 },
+	};
+	tEvQ_EvTable evTbl = {0};
+    tEvQ_Event ev = {0};
+    tErrorCodes_EvQ result;
+
+	CU_ASSERT_EQUAL(Cwsw_Evt__InitEventTable(&evTbl, my_table_of_events, TABLE_SIZE(my_table_of_events)), kErr_EvQ_NoError);
+    result = Cwsw_Evt__PutEvent(&evTbl, 1, &ev);
+	CU_ASSERT_EQUAL(result, kErr_EvQ_NoError);
+	CU_ASSERT_EQUAL(my_table_of_events[1].evId, 0);
+	CU_ASSERT_EQUAL(my_table_of_events[1].evData, 0);
 }

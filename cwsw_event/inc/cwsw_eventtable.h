@@ -20,7 +20,6 @@
 // ----	System Headers --------------------------
 
 // ----	Project Headers -------------------------
-//#include "projcfg.h"
 
 // ----	Module Headers --------------------------
 #include "cwsw_event.h"
@@ -41,8 +40,6 @@ extern "C" {
  *	@ingroup tEvq_EvTable
  */
 enum eTblValidityMarkers {
-	/**
-	 */
 	kCT_TBL_VALID = 0xFE3D578,	//!< Compile-Time Table Valid marker. "Feed State". No meaning attached to this word or symbol.
 	kRT_TBL_VALID = 0xEA57052	//!< Run-Time Table Valid marker. "East OS/2". Again, no meaning assigned to this.
 };
@@ -106,7 +103,7 @@ typedef int32_t	tEvQ_EvtHandle;		/* would prefer to use `ssize_t`, but that's a 
 extern tErrorCodes_EvQ	Cwsw_Evt__InitEventTable(ptEvQ_EvTable pEvQTable, ptEvQ_Event pTable, size_t TableSize);		/* initialize a table of events */
 extern ptEvQ_Event		Cwsw_Evt__GetEventPtr(ptEvQ_EvTable pEvTbl, tEvQ_EvtHandle hnd);
 extern tErrorCodes_EvQ	Cwsw_Evt__GetEvent(ptEvQ_Event pEv, ptEvQ_EvTable pEvTb, tEvQ_EvtHandle hnd);
-extern tErrorCodes_EvQ	Cwsw_Evt__PutEvent(ptEvQ_EvTable pEvTb, tEvQ_EvtHandle hnd, ptEvQ_Event pEv);
+extern tErrorCodes_EvQ	Cwsw_Evt__PutEvent(ptEvQ_EvTable pEvTb, tEvQ_EvtHandle hnd, ptEvQ_Event const pEv);
 
 
 // ---- /Discrete Functions ------------------------------------------------- }

@@ -143,7 +143,7 @@ Cwsw_Evt__GetEvent(ptEvQ_Event pEv, ptEvQ_EvTable pEvTb, tEvQ_EvtHandle hnd)
  *	@ingroup tEvq_EvTable
  */
 tErrorCodes_EvQ
-Cwsw_Evt__PutEvent(ptEvQ_EvTable pEvTb, tEvQ_EvtHandle hnd, ptEvQ_Event pEv)
+Cwsw_Evt__PutEvent(ptEvQ_EvTable pEvTb, tEvQ_EvtHandle hnd, ptEvQ_Event const pEv)
 {
 	ptEvQ_Event pfound;
 

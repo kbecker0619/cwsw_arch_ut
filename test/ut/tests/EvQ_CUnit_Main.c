@@ -34,6 +34,10 @@ extern void testCwsw_Evt__InitEventTable_badparams();
 extern void testCwsw_Evt__InitEventTable_goodparams();
 extern void testCwsw_Evt__GetEventPtr_badparams();
 extern void testCwsw_Evt__GetEventPtr_goodparams();
+extern void testCwsw_Evt__GetEvent_badparams();
+extern void testCwsw_Evt__GetEvent_goodparams();
+extern void testCwsw_Evt__PutEvent_badparams();
+extern void testCwsw_Evt__PutEvent_goodparams();
 
 
 int init_suite(void)
@@ -105,15 +109,21 @@ int main()
     /* Add the tests to the suite */
     if( (NULL == CU_add_test(pSuite, "testCb_event_demo_cs_enter", testCb_event_demo_cs_enter))                             ||
         (NULL == CU_add_test(pSuite, "testCb_event_demo_cs_leave", testCb_event_demo_cs_leave))                             ||
+
         /* add Event component unit tests */
         (NULL == CU_add_test(pSuite, "testCwsw_Evt__Init",      testCwsw_Evt__Init))                                        ||
         (NULL == CU_add_test(pSuite, "testCwsw_EvT__Deinit",    testCwsw_EvT__Deinit))                                      ||
-        /* Event Table unit tests */
+
+		/* Event Table unit tests */
         (NULL == CU_add_test(pSuite, "testCwsw_Evt__InitEventTable_badparams",  testCwsw_Evt__InitEventTable_badparams))    ||
         (NULL == CU_add_test(pSuite, "testCwsw_Evt__InitEventTable_goodparams", testCwsw_Evt__InitEventTable_goodparams))	||
 		(NULL == CU_add_test(pSuite, "testCwsw_Evt__GetEventPtr_badparams",		testCwsw_Evt__GetEventPtr_badparams))		||
-		(NULL == CU_add_test(pSuite, "testCwsw_Evt__GetEventPtr_goodparams",	testCwsw_Evt__GetEventPtr_goodparams))
-		
+		(NULL == CU_add_test(pSuite, "testCwsw_Evt__GetEventPtr_goodparams",	testCwsw_Evt__GetEventPtr_goodparams))		||
+		(NULL == CU_add_test(pSuite, "testCwsw_Evt__GetEvent_badparams",		testCwsw_Evt__GetEvent_badparams))			||
+		(NULL == CU_add_test(pSuite, "testCwsw_Evt__GetEvent_goodparams",		testCwsw_Evt__GetEvent_goodparams))			||
+		(NULL == CU_add_test(pSuite, "testCwsw_Evt__PutEvent_badparams",		testCwsw_Evt__PutEvent_badparams))			||
+		(NULL == CU_add_test(pSuite, "testCwsw_Evt__PutEvent_goodparams",		testCwsw_Evt__PutEvent_goodparams))
+
     ) {
         CU_cleanup_registry();
         return CU_get_error();

@@ -47,6 +47,7 @@ Contributor(s):
         </logicalFolder>
         <logicalFolder name="inc" displayName="inc" projectFiles="true">
           <itemPath>../../cwsw_event/inc/cwsw_event.h</itemPath>
+          <itemPath>../../cwsw_event/inc/cwsw_eventtable.h</itemPath>
         </logicalFolder>
         <logicalFolder name="src" displayName="src" projectFiles="true">
           <itemPath>../../cwsw_event/src/cwsw_event.c</itemPath>
@@ -233,6 +234,11 @@ Contributor(s):
       <item path="../../cwsw_event/doc/readme.md" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../cwsw_event/inc/cwsw_event.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../cwsw_event/inc/cwsw_eventtable.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../cwsw_event/src/cwsw_event.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -543,6 +549,11 @@ Contributor(s):
       <item path="../../cwsw_event/doc/readme.md" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../cwsw_event/inc/cwsw_event.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../cwsw_event/inc/cwsw_eventtable.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../cwsw_event/src/cwsw_event.c" ex="false" tool="0" flavor2="0">
       </item>
