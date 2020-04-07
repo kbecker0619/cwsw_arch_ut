@@ -71,6 +71,7 @@ typedef tEvQ_QueueCtrl *ptEvQ_QueueCtrl;
 // ---- Discrete Functions -------------------------------------------------- {
 
 extern uint16_t			Cwsw_EvQ__Init(void);
+extern void				Cwsw_EvQ__Deinit(void);
 extern tErrorCodes_EvQ	Cwsw_EvQ__InitEvQ(ptEvQ_QueueCtrl pEvQ, ptEvQ_EvTable pEvTable, ptEvQ_Event pEvBuff, size_t szEvBuf);
 extern bool 			Cwsw_EvQ__Get_Initialized(void);
 extern tErrorCodes_EvQ	Cwsw_EvQ__FlushEvents(ptEvQ_QueueCtrl pEvQueueCtrl);

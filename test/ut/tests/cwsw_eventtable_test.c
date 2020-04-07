@@ -55,17 +55,16 @@ void testCwsw_Evt__GetEventPtr_badparams()
 		{ 5, 205 }, { 6, 206 }, { 7, 207 }, { 8, 414 }, { 9, 415 },
 	};
 	tEvQ_EvTable evTbl = {0};
-    tEvQ_EvtHandle hnd = 1;
     ptEvQ_Event pEv;	/* note this data type is "pointer-to-event" */
 
 	/* 1. null event table */
-    pEv = Cwsw_Evt__GetEventPtr(NULL, hnd);
+    pEv = Cwsw_Evt__GetEventPtr(NULL, 1);
 	CU_ASSERT_PTR_EQUAL(pEv, NULL);
 
     /* 2. uninitialized event table.
 	 * note this relies on the initializer specified for the table.
 	 */
-	pEv = Cwsw_Evt__GetEventPtr(&evTbl, hnd);
+	pEv = Cwsw_Evt__GetEventPtr(&evTbl, 1);
 	CU_ASSERT_PTR_EQUAL(pEv, NULL);
 
 	/* 3. badly initialized event table (no size).
@@ -74,7 +73,16 @@ void testCwsw_Evt__GetEventPtr_badparams()
 	 */
 	evTbl.pEvBuffer = my_table_of_events;
 	evTbl.szEvTbl = 0;
-	pEv = Cwsw_Evt__GetEventPtr(&evTbl, hnd);
+	pEv = Cwsw_Evt__GetEventPtr(&evTbl, 1);
+	CU_ASSERT_PTR_EQUAL(pEv, NULL);
+
+	// 4. bad handle (negative)
+	pEv = Cwsw_Evt__GetEventPtr(&evTbl, -1);
+	CU_ASSERT_PTR_EQUAL(pEv, NULL);
+
+	// 5. bad handle (too large). remember, our handle is base-0.
+	evTbl.szEvTbl = TABLE_SIZE(my_table_of_events);
+	pEv = Cwsw_Evt__GetEventPtr(&evTbl, TABLE_SIZE(my_table_of_events));
 	CU_ASSERT_PTR_EQUAL(pEv, NULL);
 }
 
@@ -86,7 +94,6 @@ void testCwsw_Evt__GetEventPtr_goodparams()
 		{ 5, 205 }, { 6, 206 }, { 7, 207 }, { 8, 414 }, { 9, 415 },
 	};
 	tEvQ_EvTable evTbl = {0};
-    tEvQ_EvtHandle hnd = 1;
     ptEvQ_Event pEv;	/* note this data type is "pointer-to-event" */
 
     CU_ASSERT_EQUAL(Cwsw_Evt__InitEventTable(&evTbl, my_table_of_events, TABLE_SIZE(my_table_of_events)), kErr_EvQ_NoError);
@@ -95,7 +102,7 @@ void testCwsw_Evt__GetEventPtr_goodparams()
 	 * Using intimate knowledge of internal operations, supply an arbitrary address to the event
 	 * buffer field (we know the UUT will not dereference it before this check is done.)
 	 */
-	pEv = Cwsw_Evt__GetEventPtr(&evTbl, hnd);
+	pEv = Cwsw_Evt__GetEventPtr(&evTbl, 1);
 	CU_ASSERT_PTR_EQUAL(pEv, &my_table_of_events[1]);
 }
 

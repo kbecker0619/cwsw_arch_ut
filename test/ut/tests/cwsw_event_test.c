@@ -14,12 +14,12 @@
 
 void testCwsw_Evt__Init()
 {
-    uint16_t result = Cwsw_Evt__Init();
-    CU_ASSERT_EQUAL(Cwsw_EvT__Get_Initialized(), true);
+    CU_ASSERT_EQUAL(Cwsw_Evt__Init(), 0);
+    CU_ASSERT_EQUAL(Cwsw_Evt__Get_Initialized(), true);
 }
 
 void testCwsw_EvT__Deinit()
 {
-    Cwsw_EvT__Deinit();
-    CU_ASSERT_EQUAL(Cwsw_EvT__Get_Initialized(), false);
+    Cwsw_Evt__Deinit();
+    CU_ASSERT_EQUAL(Cwsw_Evt__Get_Initialized(), false);
 }

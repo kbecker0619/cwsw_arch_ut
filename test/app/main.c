@@ -96,7 +96,7 @@ basic_ev_api(void)
 		kErr_EvQ_NoError == Cwsw_Evt__InitEventTable(&evTbl, my_table_of_events, TABLE_SIZE(my_table_of_events)),
 		"Confirm event table initialization");
 
-	Deinit(Cwsw_EvT);
+	Deinit(Cwsw_Evt);
 }
 
 static void

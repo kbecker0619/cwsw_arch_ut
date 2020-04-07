@@ -110,24 +110,23 @@ typedef tEvQ_Event *ptEvQ_Event;
  *	the Module argument in your IDE (e.g, Eclipse, NetBeans, etc.), and select
  *	Go To Definition.
  */
-enum { Cwsw_EvT };		/* Component ID for Event Table */
+enum { Cwsw_Evt };		/* Component ID for Event */
 
-/** Target symbol for Get(Cwsw_EvT, xxx) interface.
+/** Target symbol for Get(Cwsw_Evt, xxx) interface.
  *	@ingroup tEvQ_Event
  */
-#define Cwsw_EvT__Get(resource)		Cwsw_EvT__Get_ ## resource()
+#define Cwsw_Evt__Get(resource)		Cwsw_Evt__Get_ ## resource()
 
-/** Target for Get(Cwsw_EvT, Initialized) interface.
+/** Target for Get(Cwsw_Evt, Initialized) interface.
  *	@ingroup tEvQ_Event
  */
-extern bool Cwsw_EvT__Get_Initialized(void);
+extern bool Cwsw_Evt__Get_Initialized(void);
 
 /** target for Init(Cwsw_EvT) API.
  *	@ingroup tEvQ_Event
  */
 extern uint16_t			Cwsw_Evt__Init(void);		/* initialize event _component_ */
-
-extern void				Cwsw_EvT__Deinit(void);
+extern void				Cwsw_Evt__Deinit(void);
 
 // ---- /Targets for Get/Set APIs ------------------------------------------- }
 

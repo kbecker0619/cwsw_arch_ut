@@ -81,7 +81,7 @@ Cwsw_Evt__InitEventTable(
 
 /**	Return the address of a specified event in the event buffer.
  *  This function is intended to be used once you know which entry in the event buffer you want to
- *  access.
+ *  access. We want the function to be small & quick; as part of this, we forego the validity check.
  *
  *	@param[in]	pEvTbl	Event table control structure.
  *	@param[in]	hnd		base-0 handle, used as an index into the event buffer.
@@ -95,6 +95,7 @@ Cwsw_Evt__GetEventPtr(ptEvQ_EvTable pEvTbl, tEvQ_EvtHandle hnd)
 {
 	if(!pEvTbl)					return NULL;	// bad Event Table object.
 	if(!pEvTbl->pEvBuffer)		return NULL;	// bad event buffer object.
+	if(hnd < 0)					return NULL;	// bad handle (index).
 	if(hnd >= pEvTbl->szEvTbl)	return NULL;	// bad handle (index).
 	return &pEvTbl->pEvBuffer[hnd];
 }
@@ -145,17 +146,17 @@ Cwsw_Evt__GetEvent(ptEvQ_Event pEv, ptEvQ_EvTable pEvTb, tEvQ_EvtHandle hnd)
 tErrorCodes_EvQ
 Cwsw_Evt__PutEvent(ptEvQ_EvTable pEvTb, tEvQ_EvtHandle hnd, ptEvQ_Event const pEv)
 {
-	ptEvQ_Event pfound;
+	ptEvQ_Event pEvtBuff;
 
 	if(!pEv)					return kErr_EvQ_BadParm;
 	if(!pEvTb)					return kErr_EvQ_BadParm;
 	if(hnd >= pEvTb->szEvTbl)	return kErr_EvQ_BadTable;
 
-	pfound = Cwsw_Evt__GetEventPtr(pEvTb, hnd);
-	if(pfound)
+	pEvtBuff = Cwsw_Evt__GetEventPtr(pEvTb, hnd);
+	if(pEvtBuff)
 	{
 		int crit = Cwsw_Critical_Protect(0);
-		(void)memcpy(pfound, pEv, sizeof(tEvQ_Event));
+		(void)memcpy(pEvtBuff, pEv, sizeof(tEvQ_Event));
 		crit = Cwsw_Critical_Release(crit);
 		return kErr_EvQ_NoError;
 	}

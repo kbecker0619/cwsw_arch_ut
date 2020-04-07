@@ -56,7 +56,8 @@ TESTFILES= \
 TESTOBJECTFILES= \
 	${TESTDIR}/_ext/a7dd4220/EvQ_CUnit_Main.o \
 	${TESTDIR}/_ext/a7dd4220/cwsw_event_test.o \
-	${TESTDIR}/_ext/a7dd4220/cwsw_eventtable_test.o
+	${TESTDIR}/_ext/a7dd4220/cwsw_eventtable_test.o \
+	${TESTDIR}/_ext/a7dd4220/cwsw_evqueue_test.o
 
 # C Compiler Flags
 CFLAGS=
@@ -134,7 +135,7 @@ ${OBJECTDIR}/_ext/4ccfc345/cwsw_lib.o: ../libs/cwsw_lib/src/cwsw_lib.c
 .build-tests-conf: .build-tests-subprojects .build-conf ${TESTFILES}
 .build-tests-subprojects:
 
-${TESTDIR}/TestFiles/f5: ${TESTDIR}/_ext/a7dd4220/EvQ_CUnit_Main.o ${TESTDIR}/_ext/a7dd4220/cwsw_event_test.o ${TESTDIR}/_ext/a7dd4220/cwsw_eventtable_test.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f5: ${TESTDIR}/_ext/a7dd4220/EvQ_CUnit_Main.o ${TESTDIR}/_ext/a7dd4220/cwsw_event_test.o ${TESTDIR}/_ext/a7dd4220/cwsw_eventtable_test.o ${TESTDIR}/_ext/a7dd4220/cwsw_evqueue_test.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.c} -o ${TESTDIR}/TestFiles/f5 $^ ${LDLIBSOPTIONS}   -lcunit 
 
@@ -155,6 +156,12 @@ ${TESTDIR}/_ext/a7dd4220/cwsw_eventtable_test.o: ../ut/tests/cwsw_eventtable_tes
 	${MKDIR} -p ${TESTDIR}/_ext/a7dd4220
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/a7dd4220/cwsw_eventtable_test.o ../ut/tests/cwsw_eventtable_test.c
+
+
+${TESTDIR}/_ext/a7dd4220/cwsw_evqueue_test.o: ../ut/tests/cwsw_evqueue_test.c 
+	${MKDIR} -p ${TESTDIR}/_ext/a7dd4220
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/a7dd4220/cwsw_evqueue_test.o ../ut/tests/cwsw_evqueue_test.c
 
 
 ${OBJECTDIR}/_ext/bc57e8e8/cwsw_event_nomain.o: ${OBJECTDIR}/_ext/bc57e8e8/cwsw_event.o ../../cwsw_event/src/cwsw_event.c 

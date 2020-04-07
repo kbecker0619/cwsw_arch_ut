@@ -66,7 +66,7 @@ Cwsw_Evt__Init(void)
 
 
 void
-Cwsw_EvT__Deinit(void)
+Cwsw_Evt__Deinit(void)
 {
 	initialized = false;
 }
@@ -78,7 +78,7 @@ Cwsw_EvT__Deinit(void)
  *	@returns	false if the component is not initialized.
  */
 bool
-Cwsw_EvT__Get_Initialized(void)
+Cwsw_Evt__Get_Initialized(void)
 {
 	return initialized;
 }

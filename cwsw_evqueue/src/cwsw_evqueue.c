@@ -87,7 +87,7 @@ Cwsw_EvQ__Init(void)
 	{
 	}
 
-	if(!Get(Cwsw_EvT, Initialized))
+	if(!Get(Cwsw_Evt, Initialized))
 	{
 		ret = Init(Cwsw_Evt);
 	}
@@ -99,6 +99,19 @@ Cwsw_EvQ__Init(void)
 	return ret;
 }
 
+/** Deinitialize this component.
+ *	Contrary to the Init function, which ensures that dependencies are initialized, this de-init
+ *	function controls only this component.
+ *
+ *	Even though this specific instantiation doesn't really do anything, it is a standard member of
+ *	most CWSW components and may do something in other components. We want the API to be consistent
+ *	across components.
+ */
+void
+Cwsw_EvQ__Deinit(void)
+{
+	initialized = false;
+}
 
 /**	Target for Get(Cwsw_EvQ, Initialized) API.
  *
@@ -180,19 +193,21 @@ Cwsw_EvQ__FlushEvents(ptEvQ_QueueCtrl pEvQ)
 	if(!pEvQ->pEventTable)				{ return kErr_EvQ_BadTable; }
 	if(!pEvQ->pEventTable->pEvBuffer)	{ return kErr_EvQ_BadEvBuffer; }
 	if(!pEvQ->pEventTable->szEvTbl)		{ return kErr_EvQ_BadEvBuffer; }
-
-	pEvQ->idxRead = 0;
-	pEvQ->idxWrite = 0;
-	pEvQ->Queue_Count = 0;
-
-	return kErr_EvQ_NoError;
+	if( (kCT_TBL_VALID == pEvQ->pEventTable->validity) || (kRT_TBL_VALID == pEvQ->pEventTable->validity) )
+	{
+		pEvQ->idxRead = 0;
+		pEvQ->idxWrite = 0;
+		pEvQ->Queue_Count = 0;
+		return kErr_EvQ_NoError;
+	}
+	return kErr_EvQ_BadTable;
 }
 
 
 /**	Posts an event into the queue.
  *
  *	@param[in,out]	pEvQ	Pointer to the current control structure.
- *	@param[in]		ev		Event to add to the queue.
+ *	@param[in]		ev		Event to add to the queue. Note that an ID of 0 is disallowed (reserved event).
  *
  *	@returns Error code, where 0 (#kErr_EvQ_NoError) is no error.
  *
@@ -208,9 +223,9 @@ Cwsw_EvQ__PostEvent(ptEvQ_QueueCtrl pEvQ, tEvQ_Event ev)
 	if(!initialized)					{ return kErr_EvQ_NotInitialized; }
 	if(!pEvQ)							{ return kErr_EvQ_BadEvQ; }
 	if(!pEvQ->pEventTable)				{ return kErr_EvQ_BadTable; }
-	if(!pEvQ->pEventTable->pEvBuffer)	{ return kErr_EvQ_BadEvBuffer;}
+	if(!pEvQ->pEventTable->pEvBuffer)	{ return kErr_EvQ_BadEvBuffer; }
 	if(!pEvQ->pEventTable->szEvTbl)		{ return kErr_EvQ_BadEvBuffer; }
-//	if(NULL == pEv)						{ return kErr_EvQ_BadParm; }	<<== reserved for if we convert to pointer-to-event
+	if(!( (kCT_TBL_VALID == pEvQ->pEventTable->validity) || (kRT_TBL_VALID == pEvQ->pEventTable->validity) ))	{ return kErr_EvQ_BadTable; }
 
 	isthereroom = (pEvQ->Queue_Count < pEvQ->pEventTable->szEvTbl);
 	if(!isthereroom)					{ return kErr_EvQ_QueueFull; }
@@ -221,15 +236,18 @@ Cwsw_EvQ__PostEvent(ptEvQ_QueueCtrl pEvQ, tEvQ_Event ev)
 		tEvQ_EvtHandle idx = 0;
 		int crit = Cwsw_Critical_Protect(0);
 
+		/* validate the current write index. recall that the evq is owned by the caller, and since
+		 * we have no control over it, we need to ensure that the main operating parameters are
+		 * correct.
+		 */
+		if( (pEvQ->idxWrite < 0) || (pEvQ->idxWrite >= pEvQ->pEventTable->szEvTbl) )	{ pEvQ->idxWrite = 0; }
+
 		// get the index of the current event to write, increment to point to the next write
 		//	we don't ever expect to have an index > INT_MAX
 		idx = pEvQ->idxWrite++;
 
-		// still updating for the next write, correct for buffer wrap-around
-		if(pEvQ->idxWrite > pEvQ->pEventTable->szEvTbl)
-		{
-			pEvQ->idxWrite = 0;
-		}
+		// account for buffer  wrap-around
+		if( pEvQ->idxWrite >= pEvQ->pEventTable->szEvTbl)	{ pEvQ->idxWrite = 0; }
 
 		// add the item to the queue
 		rc = Cwsw_Evt__PutEvent(pEvQ->pEventTable, idx, &ev);
@@ -264,26 +282,30 @@ Cwsw_EvQ__GetEvent(ptEvQ_QueueCtrl pEvQ, ptEvQ_Event pEv)
 
 	// check preconditions, in order of priority
 	if(!initialized)					{ return kErr_EvQ_NotInitialized; }
-	if(!pEvQ)							{ return kErr_EvQ_BadEvQ; }
-	if(!pEvQ->pEventTable)				{ return kErr_EvQ_BadTable; }
-	if(!pEvQ->pEventTable->pEvBuffer)	{ return kErr_EvQ_BadEvBuffer;}
-	if(!pEvQ->pEventTable->szEvTbl)		{ return kErr_EvQ_BadEvBuffer; }
-	if(!pEv)							{ return kErr_EvQ_BadParm; }
-	if(!pEvQ->Queue_Count)				{ return kErr_EvQ_QueueEmpty; }
+	if(!pEvQ)							{ return kErr_EvQ_BadEvQ; }			// no event queue
+	if(!pEvQ->pEventTable)				{ return kErr_EvQ_BadTable; }		// no event table
+	if(!pEvQ->pEventTable->pEvBuffer)	{ return kErr_EvQ_BadEvBuffer;}		// uninitialized event table
+	if(pEvQ->pEventTable->szEvTbl < 1)	{ return kErr_EvQ_BadEvBuffer; }	// event table of no size
+	if(!pEv)							{ return kErr_EvQ_BadParm; }		// null event
+	if(pEvQ->Queue_Count < 1)			{ return kErr_EvQ_QueueEmpty; }		// empty queue, nothing to get
+	if(!( (kCT_TBL_VALID == pEvQ->pEventTable->validity) || (kRT_TBL_VALID == pEvQ->pEventTable->validity) ))	{ return kErr_EvQ_BadTable; }	// invalid event table
 
 	Cwsw_EvT__InitEvent(pEv);
 
 	crit = Cwsw_Critical_Protect(0);	// protect the evq control structure.
+
+	/* validate the current write index. recall that the evq is owned by the caller, and since
+	 * we have no control over it, we need to ensure that the main operating parameters are
+	 * correct.
+	 */
+	if( (pEvQ->idxRead < 0) || (pEvQ->idxRead >= pEvQ->pEventTable->szEvTbl) )	{ pEvQ->idxRead = 0; }
 
 	// get the index of the current event to read, increment to point to the next read
 	//	we don't ever expect to have an index > INT_MAX
 	idx = pEvQ->idxRead++;
 
 	// still updating for the next read, correct for buffer wrap-around
-	if(pEvQ->idxRead > pEvQ->pEventTable->szEvTbl)
-	{
-		pEvQ->idxRead = 0;
-	}
+	if(pEvQ->idxRead > pEvQ->pEventTable->szEvTbl)	{ pEvQ->idxRead = 0; }
 
 	// retrieve the event
 	rc = Cwsw_Evt__GetEvent(pEv, pEvQ->pEventTable, idx);

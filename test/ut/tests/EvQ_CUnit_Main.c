@@ -9,11 +9,11 @@
 #include <stdlib.h>
 #include <CUnit/Basic.h>
 
-#include <stdbool.h>    /* type bool, w/ false, true */
-#include "cwsw_event.h" /* deinit */
-/*
- * CUnit Test Suite
- */
+#include <stdbool.h>		/* type bool, w/ false, true */
+#include "cwsw_evqueue.h"	/* deinit */
+
+#include "cwsw_evqueue_test.h"
+
 
 /* Within **this** file, we are doing a very basic check of the project-specific enter-exit-
  * critical-section implementation. As part of that, the `init` an `clean` suite actions will set up
@@ -27,18 +27,6 @@ extern int crit_section_line;
 extern void cb_event_demo_cs_enter(int protlvl, const char* const filename, const int lineno);
 extern void cb_event_demo_cs_leave(int protlvl, const char* const filename, const int lineno);
 
-/* CUnit function prototypes */
-extern void testCwsw_Evt__Init();
-extern void testCwsw_EvT__Deinit();
-extern void testCwsw_Evt__InitEventTable_badparams();
-extern void testCwsw_Evt__InitEventTable_goodparams();
-extern void testCwsw_Evt__GetEventPtr_badparams();
-extern void testCwsw_Evt__GetEventPtr_goodparams();
-extern void testCwsw_Evt__GetEvent_badparams();
-extern void testCwsw_Evt__GetEvent_goodparams();
-extern void testCwsw_Evt__PutEvent_badparams();
-extern void testCwsw_Evt__PutEvent_goodparams();
-
 
 int init_suite(void)
 {
@@ -46,7 +34,9 @@ int init_suite(void)
 	crit_section_seen = false;
 
     /* event initialization */
-    Cwsw_EvT__Deinit();
+    Cwsw_Evt__Deinit();
+	Cwsw_EvQ__Deinit();
+
     return 0;
 }
 
@@ -56,7 +46,9 @@ int clean_suite(void)
 	crit_section_seen = false;
 
     /* event initialization */
-    Cwsw_EvT__Deinit();
+    Cwsw_Evt__Deinit();
+	Cwsw_EvQ__Deinit();
+
     return 0;
 }
 
@@ -122,7 +114,22 @@ int main()
 		(NULL == CU_add_test(pSuite, "testCwsw_Evt__GetEvent_badparams",		testCwsw_Evt__GetEvent_badparams))			||
 		(NULL == CU_add_test(pSuite, "testCwsw_Evt__GetEvent_goodparams",		testCwsw_Evt__GetEvent_goodparams))			||
 		(NULL == CU_add_test(pSuite, "testCwsw_Evt__PutEvent_badparams",		testCwsw_Evt__PutEvent_badparams))			||
-		(NULL == CU_add_test(pSuite, "testCwsw_Evt__PutEvent_goodparams",		testCwsw_Evt__PutEvent_goodparams))
+		(NULL == CU_add_test(pSuite, "testCwsw_Evt__PutEvent_goodparams",		testCwsw_Evt__PutEvent_goodparams))			||
+
+		/* Event Queue unit tests*/
+		(NULL == CU_add_test(pSuite, "testCwsw_EvQ__Init",						testCwsw_EvQ__Init))					||
+		(NULL == CU_add_test(pSuite, "testCwsw_EvQ__InitEvQ",					testCwsw_EvQ__InitEvQ_badparams))		||
+		(NULL == CU_add_test(pSuite, "testCwsw_EvQ__InitEvQ_goodparams",		testCwsw_EvQ__InitEvQ_goodparams))		||
+		(NULL == CU_add_test(pSuite, "testCwsw_EvQ__FlushEvents_badparams",		testCwsw_EvQ__FlushEvents_badparams))	||
+		(NULL == CU_add_test(pSuite, "testCwsw_EvQ__FlushEvents_goodparams",	testCwsw_EvQ__FlushEvents_goodparams))	||
+		(NULL == CU_add_test(pSuite, "testCwsw_EvQ__PostEvent_badparams",		testCwsw_EvQ__PostEvent_badparams))		||
+		(NULL == CU_add_test(pSuite, "testCwsw_EvQ__PostEvent_goodparams",		testCwsw_EvQ__PostEvent_goodparams))	||
+		(NULL == CU_add_test(pSuite, "testCwsw_EvQ__GetEvent_badparams",		testCwsw_EvQ__GetEvent_badparams))		||
+		(NULL == CU_add_test(pSuite, "testCwsw_EvQ__GetEvent_goodparams",		testCwsw_EvQ__GetEvent_goodparams))		||
+		
+		0	/* "end of table" marker, even though this isn't in table format. i just want all of the previous lines to be
+			 * consistent so that they can be rearranged without having to twiddle with them.
+			 */
 
     ) {
         CU_cleanup_registry();
