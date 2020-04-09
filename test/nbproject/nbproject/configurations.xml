@@ -202,6 +202,7 @@ Contributor(s):
         <itemPath>../ut/tests/cwsw_eventtable_test.c</itemPath>
         <itemPath>../ut/tests/cwsw_evqueue_test.c</itemPath>
         <itemPath>../ut/tests/cwsw_evqueue_test.h</itemPath>
+        <itemPath>../ut/tests/cwsw_evthndlrassoc_test.c</itemPath>
       </logicalFolder>
     </logicalFolder>
   </logicalFolder>
@@ -523,6 +524,11 @@ Contributor(s):
       </item>
       <item path="../ut/tests/cwsw_evqueue_test.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="../ut/tests/cwsw_evthndlrassoc_test.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
       <folder path="TestFiles/f5">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f5</output>
@@ -841,6 +847,11 @@ Contributor(s):
       <item path="../ut/tests/cwsw_evqueue_test.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../ut/tests/cwsw_evqueue_test.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../ut/tests/cwsw_evthndlrassoc_test.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
       </item>
       <folder path="TestFiles/f5">
         <linkerTool>
