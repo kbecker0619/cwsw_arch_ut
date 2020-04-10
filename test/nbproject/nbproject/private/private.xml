@@ -8,10 +8,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/_Projects/cwsw_eventqueue/test/ut/tests/EvQ_CUnit_Main.c</file>
-            <file>file:/C:/_Projects/cwsw_eventqueue/cwsw_event/inc/cwsw_event.h</file>
+            <file>file:/C:/_Projects/cwsw_eventqueue/test/ut/tests/cwsw_evthndlrassoc_test.c</file>
             <file>file:/C:/_Projects/cwsw_eventqueue/test/ut/tests/cwsw_evqueue_test.c</file>
-            <file>file:/C:/_Projects/cwsw_eventqueue/cwsw_evqueue/src/cwsw_evqueue.c</file>
-            <file>file:/C:/_Projects/cwsw_eventqueue/cwsw_event/src/cwsw_eventtable.c</file>
+            <file>file:/C:/_Projects/cwsw_eventqueue/cwsw_evqueue_ex/src/cwsw_evthndlrassoc.c</file>
         </group>
     </open-files>
 </project-private>

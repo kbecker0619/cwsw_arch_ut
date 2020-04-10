@@ -135,7 +135,9 @@ Cwsw_EvQ__Get_Initialized(void)
  * 	@param[out]	pEvQ	Reference to the Event Queue.
  *	@param[in] pEvTable	Pointer to the event table object.
  *						This is an independent object, not embedded into the EvQ control structure.
- * @return				Error code, where 0 (#kErr_EvQ_NoError) is no error.
+ *
+ *	@returns			Error code, where 0 (#kErr_EvQ_NoError) is no error. In the event of an
+ *						error return, no writes to any output parameter are performed.
  *
  *	It is the responsibility of the caller to ensure the validity of the buffer
  *	and control struct.

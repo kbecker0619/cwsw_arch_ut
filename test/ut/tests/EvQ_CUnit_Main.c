@@ -13,6 +13,7 @@
 #include "cwsw_evqueue.h"	/* deinit */
 
 #include "cwsw_evqueue_test.h"
+#include "cwsw_evqueue_ex_tests.h"
 
 
 /* Within **this** file, we are doing a very basic check of the project-specific enter-exit-
@@ -91,7 +92,7 @@ int main()
 		kNumCUnitTestingSuites
 	};
 
-	int idx;
+	int suiteidx;
 	bool problem = false;
 
     CU_pSuite pSuite[kNumCUnitTestingSuites] = {0};
@@ -99,11 +100,11 @@ int main()
     /* Initialize the CUnit test registry */
     if (CUE_SUCCESS != CU_initialize_registry())	{ return CU_get_error(); }
 
-	for(idx = 0; idx < kNumCUnitTestingSuites; idx ++)
+	for(suiteidx = 0; suiteidx < kNumCUnitTestingSuites; suiteidx ++)
 	{
 		/* Add suite to the registry */
-		pSuite[idx] = CU_add_suite("EvQ CUnit Test Suite", init_suite, clean_suite);
-		if (NULL == pSuite[idx])
+		pSuite[suiteidx] = CU_add_suite("EvQ CUnit Test Suite", init_suite, clean_suite);
+		if (NULL == pSuite[suiteidx])
 		{
 			CU_cleanup_registry();
 			return CU_get_error();
@@ -111,45 +112,52 @@ int main()
 
 	    /* Add the tests to the suite */
 		problem = false;
-		switch(idx)
+		switch(suiteidx)
 		{
 		case kEventPkgTests:	{
-			problem |= (NULL == CU_add_test(pSuite[idx], "testCb_event_demo_cs_enter", testCb_event_demo_cs_enter));
-			problem |= (NULL == CU_add_test(pSuite[idx], "testCb_event_demo_cs_leave", testCb_event_demo_cs_leave));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCb_event_demo_cs_enter", testCb_event_demo_cs_enter));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCb_event_demo_cs_leave",	testCb_event_demo_cs_leave));
 
 			/* add Event component unit tests */
-			problem |= (NULL == CU_add_test(pSuite[idx], "testCwsw_Evt__Init",      testCwsw_Evt__Init));
-			problem |= (NULL == CU_add_test(pSuite[idx], "testCwsw_EvT__Deinit",    testCwsw_EvT__Deinit));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_Evt__Init",      testCwsw_Evt__Init));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvT__Deinit",    testCwsw_EvT__Deinit));
 
 			/* Event Table unit tests */
-			problem |= (NULL == CU_add_test(pSuite[idx], "testCwsw_Evt__InitEventTable_badparams",	testCwsw_Evt__InitEventTable_badparams));
-			problem |= (NULL == CU_add_test(pSuite[idx], "testCwsw_Evt__InitEventTable_goodparams",	testCwsw_Evt__InitEventTable_goodparams));
-			problem |= (NULL == CU_add_test(pSuite[idx], "testCwsw_Evt__GetEventPtr_badparams",		testCwsw_Evt__GetEventPtr_badparams));
-			problem |= (NULL == CU_add_test(pSuite[idx], "testCwsw_Evt__GetEventPtr_goodparams",	testCwsw_Evt__GetEventPtr_goodparams));
-			problem |= (NULL == CU_add_test(pSuite[idx], "testCwsw_Evt__GetEvent_badparams",		testCwsw_Evt__GetEvent_badparams));
-			problem |= (NULL == CU_add_test(pSuite[idx], "testCwsw_Evt__GetEvent_goodparams",		testCwsw_Evt__GetEvent_goodparams));
-			problem |= (NULL == CU_add_test(pSuite[idx], "testCwsw_Evt__PutEvent_badparams",		testCwsw_Evt__PutEvent_badparams));
-			problem |= (NULL == CU_add_test(pSuite[idx], "testCwsw_Evt__PutEvent_goodparams",		testCwsw_Evt__PutEvent_goodparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_Evt__InitEventTable_badparams",		testCwsw_Evt__InitEventTable_badparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_Evt__InitEventTable_goodparams",	testCwsw_Evt__InitEventTable_goodparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_Evt__GetEventPtr_badparams",		testCwsw_Evt__GetEventPtr_badparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_Evt__GetEventPtr_goodparams",		testCwsw_Evt__GetEventPtr_goodparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_Evt__GetEvent_badparams",			testCwsw_Evt__GetEvent_badparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_Evt__GetEvent_goodparams",			testCwsw_Evt__GetEvent_goodparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_Evt__PutEvent_badparams",			testCwsw_Evt__PutEvent_badparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_Evt__PutEvent_goodparams",			testCwsw_Evt__PutEvent_goodparams));
 			}
 			break;
 
 		case kEventQueuePkgTests:	{
-			}
-
-			break;
-		case kEventQueueExPkgTests:
-		default:
-
 			/* Event Queue unit tests*/
-			problem |= (NULL == CU_add_test(pSuite[0], "testCwsw_EvQ__Init",						testCwsw_EvQ__Init));
-			problem |= (NULL == CU_add_test(pSuite[0], "testCwsw_EvQ__InitEvQ",					testCwsw_EvQ__InitEvQ_badparams));
-			problem |= (NULL == CU_add_test(pSuite[0], "testCwsw_EvQ__InitEvQ_goodparams",		testCwsw_EvQ__InitEvQ_goodparams));
-			problem |= (NULL == CU_add_test(pSuite[0], "testCwsw_EvQ__FlushEvents_badparams",		testCwsw_EvQ__FlushEvents_badparams));
-			problem |= (NULL == CU_add_test(pSuite[0], "testCwsw_EvQ__FlushEvents_goodparams",	testCwsw_EvQ__FlushEvents_goodparams));
-			problem |= (NULL == CU_add_test(pSuite[0], "testCwsw_EvQ__PostEvent_badparams",		testCwsw_EvQ__PostEvent_badparams));
-			problem |= (NULL == CU_add_test(pSuite[0], "testCwsw_EvQ__PostEvent_goodparams",		testCwsw_EvQ__PostEvent_goodparams));
-			problem |= (NULL == CU_add_test(pSuite[0], "testCwsw_EvQ__GetEvent_badparams",		testCwsw_EvQ__GetEvent_badparams));
-			problem |= (NULL == CU_add_test(pSuite[0], "testCwsw_EvQ__GetEvent_goodparams",		testCwsw_EvQ__GetEvent_goodparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQ__Init",						testCwsw_EvQ__Init));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQ__InitEvQ",					testCwsw_EvQ__InitEvQ_badparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQ__InitEvQ_goodparams",		testCwsw_EvQ__InitEvQ_goodparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQ__FlushEvents_badparams",	testCwsw_EvQ__FlushEvents_badparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQ__FlushEvents_goodparams",	testCwsw_EvQ__FlushEvents_goodparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQ__PostEvent_badparams",		testCwsw_EvQ__PostEvent_badparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQ__PostEvent_goodparams",		testCwsw_EvQ__PostEvent_goodparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQ__GetEvent_badparams",		testCwsw_EvQ__GetEvent_badparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQ__GetEvent_goodparams",		testCwsw_EvQ__GetEvent_goodparams));
+			}
+			break;
+
+		case kEventQueueExPkgTests:	{
+			/* event handler association table tests */
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvHA__InitEventHandlerTable",	testCwsw_EvHA__InitEventHandlerTable));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvHA__SetEvHandler",			testCwsw_EvHA__SetEvHandler));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvHA__GetEvHandler",			testCwsw_EvHA__GetEvHandler));
+
+			}
+			break;
+
+		default:
 			break;
 		}
 
