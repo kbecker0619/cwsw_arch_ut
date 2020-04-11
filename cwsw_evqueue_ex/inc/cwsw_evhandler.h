@@ -58,12 +58,12 @@ typedef void (*pEvQ_EvHandlerFunc)(tEvQ_Event ev, uint32_t extra);
 typedef struct sEvHandlerAssoc {
 	tEvQ_EventID		evId;
 	pEvQ_EvHandlerFunc	pEvHandler;
-} tEvQ_EvHandlerAssoc;
+} tEvHA_EvHandlerAssoc;
 
 /** Reference to an Event Handler Association Table.
  * 	@ingroup tEvQ_EvHndlrAssocTable
  */
-typedef tEvQ_EvHandlerAssoc * ptEvQ_EvHandlerAssoc;
+typedef tEvHA_EvHandlerAssoc * ptEvHA_EvHandlerAssoc;
 
 
 // ============================================================================
@@ -74,8 +74,8 @@ typedef tEvQ_EvHandlerAssoc * ptEvQ_EvHandlerAssoc;
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
-tErrorCodes_EvQ		Cwsw_EvQ__RegisterHandler(ptEvQ_EvHandlerAssoc pEvHndlrTbl, size_t evtblsz, tEvQ_EventID ev, pEvQ_EvHandlerFunc pf);
-pEvQ_EvHandlerFunc	Cwsw_EvQ__GetHandler(ptEvQ_EvHandlerAssoc pEvHndlr, size_t evtblsz, tEvQ_EventID ev);
+tErrorCodes_EvQ		Cwsw_EvQ__RegisterHandler(ptEvHA_EvHandlerAssoc pEvHndlrTbl, size_t evtblsz, tEvQ_EventID ev, pEvQ_EvHandlerFunc pf);
+pEvQ_EvHandlerFunc	Cwsw_EvQ__GetHandler(ptEvHA_EvHandlerAssoc pEvHndlr, size_t evtblsz, tEvQ_EventID ev);
 
 
 #ifdef	__cplusplus

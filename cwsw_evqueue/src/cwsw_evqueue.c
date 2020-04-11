@@ -155,21 +155,19 @@ Cwsw_EvQ__InitEvQ(
 	tErrorCodes_EvQ rc = kErr_EvQ_NotInitialized;
 
 	// check preconditions, in order of priority
-	if(!initialized)	{ return kErr_EvQ_NotInitialized; }		// has component init happened?
-	if(!pEvQ)			{ return kErr_EvQ_BadEvQ; }				// is evq control structure valid?
-	if(!pEvTable)		{ return kErr_EvQ_BadTable; }			// is event table valid?
-	if(!pEvBuff)		{ return kErr_EvQ_BadEvBuffer; }		// is event buffer valid?
-	if(!szEvBuf)		{ return kErr_EvQ_BadEvBuffer; }		// is event buffer valid? (while the event component itself allows zero-size tables, we don't)
+	if(!initialized)	return kErr_EvQ_NotInitialized; 	// has component init happened?
+	if(!pEvQ)			return kErr_EvQ_BadEvQ; 			// is evq control structure valid?
+	if(!pEvTable)		return kErr_EvQ_BadTable; 			// is event table valid?
+	if(!pEvBuff)		return kErr_EvQ_BadEvBuffer; 		// is event buffer valid?
+	if(!szEvBuf)		return kErr_EvQ_BadEvBuffer; 		// is event buffer valid? (while the event component itself allows zero-size tables, we don't)
 
 	rc = Cwsw_Evt__InitEventTable(pEvTable, pEvBuff, szEvBuf);
-	if(!rc)
-	{
-		pEvQ->pEventTable	= pEvTable;
-		pEvQ->Queue_Count	= 0;
-		pEvQ->idxRead		= 0;
-		pEvQ->idxWrite		= 0;
-	}
+	if(rc)				return rc;
 
+	pEvQ->pEventTable	= pEvTable;
+	pEvQ->Queue_Count	= 0;
+	pEvQ->idxRead		= 0;
+	pEvQ->idxWrite		= 0;
 	return kErr_EvQ_NoError;
 }
 

@@ -21,7 +21,7 @@
  */
 void testCwsw_EvHA__InitEventHandlerTable(void)
 {
-	tEvQ_EvHandlerAssoc HndlrArray[10] = {0};	// association array; equiv. to "event buffer" in an event table.
+	tEvHA_EvHandlerAssoc HndlrArray[10] = {0};	// association array; equiv. to "event buffer" in an event table.
     tEvQ_EvHndlrAssocTable EvtHndlrTbl = {0};	// event handler association table
     tErrorCodes_EvQ result;
 
@@ -33,10 +33,11 @@ void testCwsw_EvHA__InitEventHandlerTable(void)
 
 	// bad size
 	CU_ASSERT_EQUAL((result = Cwsw_EvHA__InitEventHandlerTable(&EvtHndlrTbl, HndlrArray, (size_t)INT_MAX + 1UL)), kErr_EvQ_BadParm);
+	CU_ASSERT_EQUAL((result = Cwsw_EvHA__InitEventHandlerTable(&EvtHndlrTbl, HndlrArray, 0UL)), kErr_EvQ_BadParm);
 
 	// successful
 	CU_ASSERT_EQUAL((result = Cwsw_EvHA__InitEventHandlerTable(&EvtHndlrTbl, HndlrArray, TABLE_SIZE(HndlrArray))), kErr_EvQ_NoError);
-	CU_ASSERT_PTR_EQUAL(EvtHndlrTbl.pEvtHndlrTbl, HndlrArray);
+	CU_ASSERT_PTR_EQUAL(EvtHndlrTbl.pEvtHndlrLut, HndlrArray);
 	CU_ASSERT_EQUAL(EvtHndlrTbl.szEvtHandlerTbl, TABLE_SIZE(HndlrArray));
 	CU_ASSERT_EQUAL(EvtHndlrTbl.validity, kRT_TBL_VALID);
 }
@@ -44,8 +45,7 @@ void testCwsw_EvHA__InitEventHandlerTable(void)
 
 static tEvQ_Event gev = {0};
 static uint32_t evextra = 0;
-
-void EvHandlerFunc(tEvQ_Event ev, uint32_t extra)
+static void EvHandlerFunc(tEvQ_Event ev, uint32_t extra)
 {
 	gev.evId = ev.evId;
 	gev.evData = ev.evData;
@@ -56,7 +56,7 @@ void testCwsw_EvHA__SetEvHandler(void)
 {
     tErrorCodes_EvQ result;
 	// association array; equiv. to "event buffer" in an event table.
-	tEvQ_EvHandlerAssoc HndlrArray[10] = {0};
+	tEvHA_EvHandlerAssoc HndlrArray[10] = {0};
 	// event handler association table
     tEvQ_EvHndlrAssocTable EvtHndlrTbl = {HndlrArray, TABLE_SIZE(HndlrArray), kCT_TBL_VALID + 1};	// <-- intentionally bad validation signature
 
@@ -89,7 +89,7 @@ void testCwsw_EvHA__GetEvHandler(void)
 {
     pEvQ_EvHandlerFunc result;
 	// association array; equiv. to "event buffer" in an event table.
-	tEvQ_EvHandlerAssoc HndlrArray[10] = {0};
+	tEvHA_EvHandlerAssoc HndlrArray[10] = {0};
 	// event handler association table
     tEvQ_EvHndlrAssocTable EvtHndlrTbl = {HndlrArray, TABLE_SIZE(HndlrArray), kCT_TBL_VALID + 1};	// <-- intentionally bad validation signature
 

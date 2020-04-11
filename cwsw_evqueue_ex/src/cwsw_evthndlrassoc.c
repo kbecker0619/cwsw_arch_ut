@@ -86,15 +86,16 @@ GetTableHandle(ptEvQ_EvHndlrAssocTable pHndlrTbl, tEvQ_EventID evId)
 tErrorCodes_EvQ
 Cwsw_EvHA__InitEventHandlerTable(
 	ptEvQ_EvHndlrAssocTable pEvtHndlrTbl,
-	ptEvQ_EvHandlerAssoc pHndlrArray,
+	ptEvHA_EvHandlerAssoc pHndlrArray,
 	size_t szHndlrArray)
 {
 	if(!pEvtHndlrTbl)			return kErr_EvQ_BadParm;		// no handler association table
 	if(!pHndlrArray)			return kErr_EvQ_BadParm;		// no association array
 	if(szHndlrArray > INT_MAX)	return kErr_EvQ_BadParm;		// bad table size
+	if(szHndlrArray < 1)		return kErr_EvQ_BadParm;		// bad table size
 
-	pEvtHndlrTbl->pEvtHndlrTbl		= pHndlrArray;
-	pEvtHndlrTbl->szEvtHandlerTbl	= (int32_t)szHndlrArray;	// yes, we do accept a size of 0 elements
+	pEvtHndlrTbl->pEvtHndlrLut		= pHndlrArray;
+	pEvtHndlrTbl->szEvtHandlerTbl	= (int32_t)szHndlrArray;
 	pEvtHndlrTbl->validity			= kRT_TBL_VALID;			// indicate initialization by init function (as opposed to compile-time initialization)
 
 	return kErr_EvQ_NoError;
@@ -121,17 +122,14 @@ Cwsw_EvHA__SetEvHandler(
 	tEvQ_EventID evId,
 	pEvQ_EvHandlerFunc pHndlrFunc)
 {
-//	if(!pHndlrTbl)							return kErr_EvQ_BadParm;
-//	if(evId < 1)							return kErr_EvQ_BadParm;
-//	if(evId >= pHndlrTbl->szEvtHandlerTbl)	return kErr_EvQ_BadParm;
-
 	tEvQ_EvtHandle hnd = GetTableHandle(pHndlrTbl, evId);
 	if(hnd < 1)	return kErr_EvQ_BadParm;					// not completely accurate return code, but MVP for now. could return more precise error codes if we did our own examination of the parameters.
 
 	// set event
-	pHndlrTbl->pEvtHndlrTbl[hnd].evId = evId;
+	pHndlrTbl->pEvtHndlrLut[hnd].evId = evId;
 	// set handler
-	pHndlrTbl->pEvtHndlrTbl[hnd].pEvHandler = pHndlrFunc;
+	pHndlrTbl->pEvtHndlrLut[hnd].pEvHandler = pHndlrFunc;
+
 	return kErr_EvQ_NoError;
 }
 
@@ -153,5 +151,5 @@ Cwsw_EvHA__GetEvHandler(ptEvQ_EvHndlrAssocTable pHndlrTbl,	tEvQ_EventID evId)
 	if(hnd < 1)	return NULL;
 
 	// at this time, no confirmation of event ID (it could be thought of that this confirmation was done in the GetTableHandle() call above)
-	return pHndlrTbl->pEvtHndlrTbl[hnd].pEvHandler;
+	return pHndlrTbl->pEvtHndlrLut[hnd].pEvHandler;
 }

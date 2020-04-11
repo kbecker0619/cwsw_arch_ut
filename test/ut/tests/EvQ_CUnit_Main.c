@@ -145,6 +145,7 @@ int main()
 			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQ__PostEvent_goodparams",		testCwsw_EvQ__PostEvent_goodparams));
 			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQ__GetEvent_badparams",		testCwsw_EvQ__GetEvent_badparams));
 			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQ__GetEvent_goodparams",		testCwsw_EvQ__GetEvent_goodparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQX__PostEvent",				testCwsw_EvQX__PostEvent_badparams));
 			}
 			break;
 
@@ -154,6 +155,21 @@ int main()
 			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvHA__SetEvHandler",			testCwsw_EvHA__SetEvHandler));
 			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvHA__GetEvHandler",			testCwsw_EvHA__GetEvHandler));
 
+			/* event handler tests */
+			/* not actually sure this module is useful. it seems to be an independent subset of the previous.
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQ__RegisterHandler",			testCwsw_EvQ__RegisterHandler));
+			 */
+
+			/* extended event handler tests */
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQX__InitEvQ_badparams",		testCwsw_EvQX__InitEvQ_badparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQX__InitEvQ_goodparams",		testCwsw_EvQX__InitEvQ_goodparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQX__FlushEvents_badparams",	testCwsw_EvQX__FlushEvents_badparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQX__FlushEvents_goodparams",	testCwsw_EvQX__FlushEvents_goodparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQX__PostEvent_badparams",		testCwsw_EvQX__PostEvent_badparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQx__PostEvent_goodparams",	testCwsw_EvQx__PostEvent_goodparams));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQX__SetEvHandler",			testCwsw_EvQX__SetEvHandler));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQX__GetEvHandler",			testCwsw_EvQX__GetEvHandler));
+			problem |= (NULL == CU_add_test(pSuite[suiteidx], "testCwsw_EvQX__HandleNextEvent",			testCwsw_EvQX__HandleNextEvent));
 			}
 			break;
 

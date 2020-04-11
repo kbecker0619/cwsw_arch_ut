@@ -40,7 +40,7 @@
 // ============================================================================
 
 // ============================================================================
-// ----	Private Prototypes ----------------------------------------------------
+// ----	Private Functions -----------------------------------------------------
 // ============================================================================
 
 // ============================================================================
@@ -182,7 +182,7 @@ static void
 basic_evh_api(void)
 {
 	/* event handler */
-	tEvQ_EvHandlerAssoc mytbl[kNumProjectEvqEvents] = { {0} };
+	tEvHA_EvHandlerAssoc mytbl[kNumProjectEvqEvents] = { {0} };
 	tEvQ_EvHndlrAssocTable tblMyHandlers = {0};
 	pEvQ_EvHandlerFunc myfunc;
 
@@ -211,7 +211,7 @@ basic_evqx_api(void)
 
 	// now set up the event handler table
 	//	1. event association array
-	tEvQ_EvHandlerAssoc tblxEvHndlr[kNumProjectEvqEvents] = { {0} };
+	tEvHA_EvHandlerAssoc tblxEvHndlr[kNumProjectEvqEvents] = { {0} };
 	//	2. event handler assocation table
 	tEvQ_EvHndlrAssocTable tblxMyHandlers = {tblxEvHndlr, TABLE_SIZE(tblxEvHndlr), kCT_TBL_VALID};
 
@@ -223,7 +223,7 @@ basic_evqx_api(void)
 		tEvQ_Event myev = {0};
 		// the above setup demonstrate compile-time setup.
 		// now do the same thing via the init function
-		tErrorCodes_EvQ rc = Cwsw_EvQX__InitEvQ(&MyQX,
+		tErrorCodes_EvQ rc = Cwsw_EvQX__InitEvQX(&MyQX,
 												&tblxEv,
 												tblxEvtBuff,
 												TABLE_SIZE(tblxEvtBuff),

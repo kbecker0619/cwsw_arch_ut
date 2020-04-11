@@ -63,25 +63,26 @@
  *	@ingroup tEvQ_QueueCtrlEx
  */
 tErrorCodes_EvQ
-Cwsw_EvQX__InitEvQ(
+Cwsw_EvQX__InitEvQX(
 	// Event Queue Extended component.
 	ptEvQ_QueueCtrlEx 		pEvQX,
 		// Event Queue component and its members.
-		ptEvQ_EvTable ptblEv, ptEvQ_Event pEvBuff, size_t szEvBuf,
+		ptEvQ_EvTable ptblEv, ptEvQ_Event pEvBuff, const size_t szEvBuf,
 		// Event Handler Association elements.
-		ptEvQ_EvHndlrAssocTable ptblEvH, ptEvQ_EvHandlerAssoc pAssocArr, size_t szAssocArr
+		ptEvQ_EvHndlrAssocTable ptblEvH, ptEvHA_EvHandlerAssoc pAssocArr, size_t szAssocArr
 ) {
 	tErrorCodes_EvQ rc = kErr_EvQ_NotInitialized;
-	if(!pEvQX)		return kErr_EvQ_BadParm;
-	if(!ptblEvH)	return kErr_EvQ_BadParm;
-	if(!pAssocArr)	return kErr_EvQ_BadParm;
+	if(!pEvQX)		return kErr_EvQ_BadParm;	// no event queue
+	if(!ptblEvH)	return kErr_EvQ_BadParm;	// no event handler association table
+	if(!pAssocArr)	return kErr_EvQ_BadParm;	// no event handler storage array
 
+	// initialize member EvQ (embedded struct)
 	rc = Cwsw_EvQ__InitEvQ(&pEvQX->EvQ_Ctrl, ptblEv, pEvBuff, szEvBuf);
-	if(!rc)
-	{
-		rc = Cwsw_EvHA__InitEventHandlerTable(ptblEvH, pAssocArr, szAssocArr);
-	}
-	return rc;
+	if(rc)			return rc;
+
+	// initialize member Ev Handler Association table (pointer), then the struct pointed to
+	pEvQX->pEvHndlrs = ptblEvH;
+	return Cwsw_EvHA__InitEventHandlerTable(ptblEvH, pAssocArr, szAssocArr);
 }
 
 

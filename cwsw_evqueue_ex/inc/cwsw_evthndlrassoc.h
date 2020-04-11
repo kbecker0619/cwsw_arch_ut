@@ -45,7 +45,7 @@ extern "C" {
  *	@ingroup tEvQ_EvHndlrAssocTable
  */
 typedef struct sEvQ_EvHndlrAssocTable {
-	ptEvQ_EvHandlerAssoc	pEvtHndlrTbl;		//!< Event Handler Association array.
+	ptEvHA_EvHandlerAssoc	pEvtHndlrLut;		//!< Event Handler Association look-up table.
 	int32_t					szEvtHandlerTbl;	//!< Number of entries in the Event Handler Association array.
 	uint32_t				validity;			//!< On the concern for validating the integrity of the table, provide for a validity signature of some sort.
 } tEvQ_EvHndlrAssocTable;
@@ -61,7 +61,7 @@ typedef tEvQ_EvHndlrAssocTable * ptEvQ_EvHndlrAssocTable;
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
-extern tErrorCodes_EvQ		Cwsw_EvHA__InitEventHandlerTable(ptEvQ_EvHndlrAssocTable EvtHndlrTbl, ptEvQ_EvHandlerAssoc HndlrArray, size_t szHndlrArray);
+extern tErrorCodes_EvQ		Cwsw_EvHA__InitEventHandlerTable(ptEvQ_EvHndlrAssocTable EvtHndlrTbl, ptEvHA_EvHandlerAssoc HndlrArray, size_t szHndlrArray);
 extern tErrorCodes_EvQ		Cwsw_EvHA__SetEvHandler(ptEvQ_EvHndlrAssocTable pHndlrTbl,	tEvQ_EventID evId, pEvQ_EvHandlerFunc pHndlrFunc);
 extern pEvQ_EvHandlerFunc	Cwsw_EvHA__GetEvHandler(ptEvQ_EvHndlrAssocTable pHndlrTbl,	tEvQ_EventID evId);
 

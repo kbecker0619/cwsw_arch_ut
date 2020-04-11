@@ -1,5 +1,5 @@
 /** @file
- *	@brief	Methods for the Event Queue Extended component.
+ *	@brief	Methods for the Event Handler subcomponent.
  *
  *	\copyright
  *	Copyright (c) 2020 Kevin L. Becker. All rights reserved.
@@ -55,12 +55,12 @@
  * @return				Index in the table where event was found, or -1 if not found
  */
 static tEvQ_EvtHandle
-get_ev_handle(ptEvQ_EvHandlerAssoc pEvHndlrTbl, size_t evtblsz, tEvQ_EventID evId)
+get_ev_handle(ptEvHA_EvHandlerAssoc pEvHndlrTbl, size_t evtblsz, tEvQ_EventID evId)
 {
 	tEvQ_EvtHandle		handle = 0;
 	if(!pEvHndlrTbl)	return -1;	// no table specified
-	if(evtblsz <= 0)	return -1;	// table has invalid size
-	if(evId < 1)			return -1;	// invalid event
+	if(evtblsz < 1)		return -1;	// table has invalid size
+	if(evId < 1)		return -1;	// invalid event
 	if(evId >= evtblsz)	return -1;	// invalid event
 
 	// for this edition, we're using the event as an index into our table, rather than any sort of
@@ -102,7 +102,7 @@ get_ev_handle(ptEvQ_EvHandlerAssoc pEvHndlrTbl, size_t evtblsz, tEvQ_EventID evI
  */
 tErrorCodes_EvQ
 Cwsw_EvQ__RegisterHandler(
-	ptEvQ_EvHandlerAssoc pEvHndlrTbl,
+	ptEvHA_EvHandlerAssoc pEvHndlrTbl,
 	size_t evtblsz,
 	tEvQ_EventID evId,
 	pEvQ_EvHandlerFunc pf)
@@ -132,9 +132,10 @@ Cwsw_EvQ__RegisterHandler(
 
 /**	Get the current event handler.
  *
- *	@param pEvHndlr	[in]
- *	@param evtblsz	[in]
- *	@param evId		[in]
+ *	@param	[in] pEvHndlr
+ *	@param	[in] evtblsz
+ *	@param	[in] evId
+ *
  *	@return	address of handler; NULL if non or disabled.
  *
  *	@todo: implement "enabled/disabled" status.
@@ -142,7 +143,7 @@ Cwsw_EvQ__RegisterHandler(
  *	@ingroup tEvQ_EvHndlrAssocTable
  */
 pEvQ_EvHandlerFunc
-Cwsw_EvQ__GetHandler(ptEvQ_EvHandlerAssoc pEvHndlr, size_t evtblsz, tEvQ_EventID evId)
+Cwsw_EvQ__GetHandler(ptEvHA_EvHandlerAssoc pEvHndlr, size_t evtblsz, tEvQ_EventID evId)
 {
 	tEvQ_EvtHandle idx = 0;
 

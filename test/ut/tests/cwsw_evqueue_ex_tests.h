@@ -17,6 +17,18 @@ extern void testCwsw_EvHA__InitEventHandlerTable(void);
 extern void testCwsw_EvHA__SetEvHandler(void);
 extern void testCwsw_EvHA__GetEvHandler(void);
 
+extern void testCwsw_EvQ__RegisterHandler(void);
+
+extern void testCwsw_EvQX__InitEvQ_badparams(void);
+extern void testCwsw_EvQX__InitEvQ_goodparams(void);
+extern void testCwsw_EvQX__FlushEvents_badparams(void);
+extern void testCwsw_EvQX__FlushEvents_goodparams(void);
+extern void testCwsw_EvQX__PostEvent_badparams(void);
+extern void testCwsw_EvQx__PostEvent_goodparams(void);
+extern void testCwsw_EvQX__SetEvHandler(void);
+extern void testCwsw_EvQX__GetEvHandler(void);
+extern void testCwsw_EvQX__HandleNextEvent(void);
+
 
 #ifdef __cplusplus
 }

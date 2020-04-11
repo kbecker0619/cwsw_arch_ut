@@ -66,12 +66,12 @@ typedef tEvQ_QueueCtrlEx *ptEvQ_QueueCtrlEx;
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
-extern tErrorCodes_EvQ		Cwsw_EvQX__InitEvQ(	ptEvQ_QueueCtrlEx 		pEvQX,
+extern tErrorCodes_EvQ		Cwsw_EvQX__InitEvQX(	ptEvQ_QueueCtrlEx 		pEvQX,
 												ptEvQ_EvTable			ptblEv,
 												ptEvQ_Event				pEvBuff,
-												size_t					szEvBuf,
+												const size_t			szEvBuf,
 												ptEvQ_EvHndlrAssocTable	ptblEvH,
-												ptEvQ_EvHandlerAssoc	pAssocArr,
+												ptEvHA_EvHandlerAssoc	pAssocArr,
 												size_t					szAssocArr);
 
 extern tErrorCodes_EvQ		Cwsw_EvQX__FlushEvents(ptEvQ_QueueCtrlEx pEvQX);
