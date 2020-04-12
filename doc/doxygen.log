@@ -1,5 +1,3 @@
-warning: source ../../test/app/cfg is not a readable file or directory... skipping.
-warning: source ../../test/libs/cwsw_lib is not a readable file or directory... skipping.
-warning: source ../../test/app/cfg is not a readable file or directory... skipping.
-warning: source ../../test/app is not a readable file or directory... skipping.
-warning: source ../../test/libs/cwsw_lib is not a readable file or directory... skipping.
+C:/_Projects/cwsw_eventqueue/test/libs/cwsw_lib/src/cwsw_lib.c:228: warning: ignoring \startuml command because PLANTUML_JAR_PATH is not set
+C:/_Projects/cwsw_eventqueue/test/libs/cwsw_lib/src/cwsw_lib.c:289: warning: ignoring \startuml command because PLANTUML_JAR_PATH is not set
+C:/_Projects/cwsw_eventqueue/test/libs/cwsw_lib/src/cwsw_lib.c:96: warning: ignoring \startuml command because PLANTUML_JAR_PATH is not set
