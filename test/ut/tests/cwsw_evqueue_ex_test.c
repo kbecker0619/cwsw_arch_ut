@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
+#include <stdint.h>			/* uint32_t */
 #include <CUnit/Basic.h>
 
 #include "cwsw_evqueue_ex.h"

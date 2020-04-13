@@ -68,10 +68,7 @@ Cwsw_EvQ__Init(void)
 	uint16_t ret = kErr_EvQ_NoError;
 	if( (XPRJ_Win_MinGW_Debug) || (XPRJ_Debug_Linux_GCC) || (XPRJ_Win_MSVC_Debug) )
 	{
-		#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
-		#pragma GCC diagnostic push
-		#pragma GCC diagnostic ignored "-Wpedantic"
-		#endif
+		SUPPRESS_EXTRAISO_IDENT;	/* suppress warning for function name */
 
 		dbg_printf(
 				"\tModule ID %i\t%s\t\n"
@@ -79,9 +76,7 @@ Cwsw_EvQ__Init(void)
 				Cwsw_EvQ, __FILE__,
 				__FUNCTION__);
 
-		#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
-		#pragma GCC diagnostic pop
-		#endif
+		RESTORE_WARNING_CONTEXT;
 	}
 	else
 	{
