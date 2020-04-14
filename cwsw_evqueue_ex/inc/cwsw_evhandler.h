@@ -19,8 +19,6 @@
 // ----	System Headers --------------------------
 
 // ----	Project Headers -------------------------
-//#include "projcfg.h"
-//#include "cwsw_evqueue.h"		/* tEvQ_Event, et. al. */
 #include "cwsw_eventtable.h"
 
 // ----	Module Headers --------------------------
