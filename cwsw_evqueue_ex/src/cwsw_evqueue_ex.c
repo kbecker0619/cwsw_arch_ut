@@ -72,13 +72,13 @@ Cwsw_EvQX__InitEvQX(
 		ptEvQ_EvHndlrAssocTable ptblEvH, ptEvHA_EvHandlerAssoc pAssocArr, size_t szAssocArr
 ) {
 	tErrorCodes_EvQ rc = kErr_EvQ_NotInitialized;
-	if(!pEvQX)		return kErr_EvQ_BadParm;	// no event queue
-	if(!ptblEvH)	return kErr_EvQ_BadParm;	// no event handler association table
-	if(!pAssocArr)	return kErr_EvQ_BadParm;	// no event handler storage array
+	if(!pEvQX)		{ return kErr_EvQ_BadParm; }	// no event queue
+	if(!ptblEvH)	{ return kErr_EvQ_BadParm; }	// no event handler association table
+	if(!pAssocArr)	{ return kErr_EvQ_BadParm; }	// no event handler storage array
 
 	// initialize member EvQ (embedded struct)
 	rc = Cwsw_EvQ__InitEvQ(&pEvQX->EvQ_Ctrl, ptblEv, pEvBuff, szEvBuf);
-	if(rc)			return rc;
+	if(rc)			{ return rc; }
 
 	// initialize member Ev Handler Association table (pointer), then the struct pointed to
 	pEvQX->pEvHndlrs = ptblEvH;
@@ -189,9 +189,9 @@ Cwsw_EvQX__HandleNextEvent(ptEvQ_QueueCtrlEx pEvQX, uint32_t ExtraData)
 	tEvQ_Event ev = {0};
 	pEvQ_EvHandlerFunc pf;
 
-	if(!pEvQX)	return kErr_EvQ_BadParm;
+	if(!pEvQX)	{ return kErr_EvQ_BadParm; }
 	rc = Cwsw_EvQX__GetEvent(pEvQX, &ev);
-	if(rc)		return rc;
+	if(rc)		{ return rc; }
 
 	pf = Cwsw_EvHA__GetEvHandler(pEvQX->pEvHndlrs, ev.evId);
 	if(pf)

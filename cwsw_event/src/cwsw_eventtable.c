@@ -93,10 +93,10 @@ Cwsw_Evt__InitEventTable(
 ptEvQ_Event
 Cwsw_Evt__GetEventPtr(ptEvQ_EvTable pEvTbl, tEvQ_EvtHandle hnd)
 {
-	if(!pEvTbl)					return NULL;	// bad Event Table object.
-	if(!pEvTbl->pEvBuffer)		return NULL;	// bad event buffer object.
-	if(hnd < 0)					return NULL;	// bad handle (index).
-	if(hnd >= pEvTbl->szEvTbl)	return NULL;	// bad handle (index).
+	if(!pEvTbl)					{ return NULL; }	// bad Event Table object.
+	if(!pEvTbl->pEvBuffer)		{ return NULL; }	// bad event buffer object.
+	if(hnd < 0)					{ return NULL; }	// bad handle (index).
+	if(hnd >= pEvTbl->szEvTbl)	{ return NULL; }	// bad handle (index).
 	return &pEvTbl->pEvBuffer[hnd];
 }
 
@@ -148,9 +148,9 @@ Cwsw_Evt__PutEvent(ptEvQ_EvTable pEvTb, tEvQ_EvtHandle hnd, ptEvQ_Event const pE
 {
 	ptEvQ_Event pEvtBuff;
 
-	if(!pEv)					return kErr_EvQ_BadParm;
-	if(!pEvTb)					return kErr_EvQ_BadParm;
-	if(hnd >= pEvTb->szEvTbl)	return kErr_EvQ_BadTable;
+	if(!pEv)					{ return kErr_EvQ_BadParm; }
+	if(!pEvTb)					{ return kErr_EvQ_BadParm; }
+	if(hnd >= pEvTb->szEvTbl)	{ return kErr_EvQ_BadTable; }
 
 	pEvtBuff = Cwsw_Evt__GetEventPtr(pEvTb, hnd);
 	if(pEvtBuff)
