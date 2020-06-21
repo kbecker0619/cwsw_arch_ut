@@ -77,8 +77,9 @@ extern tErrorCodes_EvQ		Cwsw_EvQX__InitEvQX(	ptEvQ_QueueCtrlEx 		pEvQX,
 extern tErrorCodes_EvQ		Cwsw_EvQX__FlushEvents(ptEvQ_QueueCtrlEx pEvQX);
 extern tErrorCodes_EvQ		Cwsw_EvQX__GetEvent(ptEvQ_QueueCtrlEx pEvQX, ptEvQ_Event pEv);
 extern tErrorCodes_EvQ		Cwsw_EvQX__PostEvent(ptEvQ_QueueCtrlEx pEvQX, tEvQ_Event ev);
-extern tErrorCodes_EvQ		Cwsw_EvQX__SetEvHandler(ptEvQ_QueueCtrlEx pEvQX, tEvQ_EventID evId, pEvQ_EvHandlerFunc pHndlrFunc);
-extern pEvQ_EvHandlerFunc	Cwsw_EvQX__GetEvHandler(ptEvQ_QueueCtrlEx pEvQX, tEvQ_EventID evId);
+extern tErrorCodes_EvQ		Cwsw_EvQX__PostEventId(ptEvQ_QueueCtrlEx pEvQX, tEvQ_EventID evId);
+extern tErrorCodes_EvQ		Cwsw_EvQX__SetEvHandler(ptEvQ_QueueCtrlEx pEvQX, tEvQ_EventID evId, ptEvQ_EvHandlerFunc pHndlrFunc);
+extern ptEvQ_EvHandlerFunc	Cwsw_EvQX__GetEvHandler(ptEvQ_QueueCtrlEx pEvQX, tEvQ_EventID evId);
 extern tErrorCodes_EvQ		Cwsw_EvQX__HandleNextEvent(ptEvQ_QueueCtrlEx pEvQX, uint32_t ExtraData);
 
 

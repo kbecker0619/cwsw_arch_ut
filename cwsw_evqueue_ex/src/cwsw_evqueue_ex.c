@@ -122,6 +122,24 @@ Cwsw_EvQX__GetEvent(ptEvQ_QueueCtrlEx pEvQX, ptEvQ_Event pEv)
 }
 
 
+/** Post an event ID.
+ * 	This is a "convenience" wrapper so that the client doesn't have to allocate & manage an event
+ * 	object, but can simply post the event ID itself.
+ *
+ *	@param [inout]	pEvQX	Extended event queue into which to post event.
+ *	@param [in]		evId	Event ID to post.
+ *	@returns	Error code from the "real" PostEvent function.
+ */
+tErrorCodes_EvQ
+Cwsw_EvQX__PostEventId(ptEvQ_QueueCtrlEx pEvQX, tEvQ_EventID evId)
+{
+	tEvQ_Event ev;
+	ev.evId = evId;
+	ev.evData = 0;
+	return Cwsw_EvQX__PostEvent(pEvQX, ev);
+}
+
+
 /**	Posts an event into the queue.
  *
  *	@param[in,out]	pEvQX	Extended Event Queue object to which to add the event.
@@ -151,7 +169,7 @@ Cwsw_EvQX__PostEvent(ptEvQ_QueueCtrlEx pEvQX, tEvQ_Event ev)
  *	@ingroup tEvQ_QueueCtrlEx
  */
 tErrorCodes_EvQ
-Cwsw_EvQX__SetEvHandler(ptEvQ_QueueCtrlEx pEvQX, tEvQ_EventID evId, pEvQ_EvHandlerFunc pHndlrFunc)
+Cwsw_EvQX__SetEvHandler(ptEvQ_QueueCtrlEx pEvQX, tEvQ_EventID evId, ptEvQ_EvHandlerFunc pHndlrFunc)
 {
 	if(!pEvQX) { return kErr_EvQ_BadParm; }
 	return Cwsw_EvHA__SetEvHandler(pEvQX->pEvHndlrs, evId, pHndlrFunc);
@@ -168,7 +186,7 @@ Cwsw_EvQX__SetEvHandler(ptEvQ_QueueCtrlEx pEvQX, tEvQ_EventID evId, pEvQ_EvHandl
  *	@note This works at the level of the Event Handler Association table, not at the EvQX level.
  *	@ingroup tEvQ_QueueCtrlEx
  */
-pEvQ_EvHandlerFunc
+ptEvQ_EvHandlerFunc
 Cwsw_EvQX__GetEvHandler(ptEvQ_QueueCtrlEx pEvQX, tEvQ_EventID evId)
 {
 	if(!pEvQX) { return NULL; }
@@ -187,11 +205,11 @@ Cwsw_EvQX__HandleNextEvent(ptEvQ_QueueCtrlEx pEvQX, uint32_t ExtraData)
 {
 	tErrorCodes_EvQ rc;
 	tEvQ_Event ev = {0};
-	pEvQ_EvHandlerFunc pf;
+	ptEvQ_EvHandlerFunc pf;
 
-	if(!pEvQX)	{ return kErr_EvQ_BadParm; }
+	if(!pEvQX)						{ return kErr_EvQ_BadParm; }
 	rc = Cwsw_EvQX__GetEvent(pEvQX, &ev);
-	if(rc)		{ return rc; }
+	if(kErr_EvQ_NoError != rc)		{ return rc; }
 
 	pf = Cwsw_EvHA__GetEvHandler(pEvQX->pEvHndlrs, ev.evId);
 	if(pf)
@@ -202,4 +220,3 @@ Cwsw_EvQX__HandleNextEvent(ptEvQ_QueueCtrlEx pEvQX, uint32_t ExtraData)
 
 	return kErr_EvQ_NoAssociation;
 }
-

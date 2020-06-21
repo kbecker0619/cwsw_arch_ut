@@ -105,7 +105,7 @@ Cwsw_EvQ__RegisterHandler(
 	ptEvHA_EvHandlerAssoc pEvHndlrTbl,
 	size_t evtblsz,
 	tEvQ_EventID evId,
-	pEvQ_EvHandlerFunc pf)
+	ptEvQ_EvHandlerFunc pf)
 {
 	tEvQ_EvtHandle idx;
 
@@ -142,7 +142,7 @@ Cwsw_EvQ__RegisterHandler(
  *
  *	@ingroup tEvQ_EvHndlrAssocTable
  */
-pEvQ_EvHandlerFunc
+ptEvQ_EvHandlerFunc
 Cwsw_EvQ__GetHandler(ptEvHA_EvHandlerAssoc pEvHndlr, size_t evtblsz, tEvQ_EventID evId)
 {
 	tEvQ_EvtHandle idx = 0;

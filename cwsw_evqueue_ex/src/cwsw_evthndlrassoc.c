@@ -54,14 +54,15 @@ static tEvQ_EvtHandle
 GetTableHandle(ptEvQ_EvHndlrAssocTable pHndlrTbl, tEvQ_EventID evId)
 {
 	// for this implementation, the event is used as an index into the LUT
-	if(!pHndlrTbl)								return -1;
+	if(!pHndlrTbl)								{ return -1; }
 	if( (pHndlrTbl->validity == kCT_TBL_VALID) ||
 		(pHndlrTbl->validity == kRT_TBL_VALID) )
 	{
-		if(evId >= pHndlrTbl->szEvtHandlerTbl)	return -1;
-		if(evId < 1)							return -1;
+		if(evId >= pHndlrTbl->szEvtHandlerTbl)	{ return -1; }
+		if(evId < 1)							{ return -1; }
 		return (tEvQ_EvtHandle)evId;
 	}
+
 	return -1;
 }
 
@@ -120,10 +121,10 @@ tErrorCodes_EvQ
 Cwsw_EvHA__SetEvHandler(
 	ptEvQ_EvHndlrAssocTable pHndlrTbl,
 	tEvQ_EventID evId,
-	pEvQ_EvHandlerFunc pHndlrFunc)
+	ptEvQ_EvHandlerFunc pHndlrFunc)
 {
 	tEvQ_EvtHandle hnd = GetTableHandle(pHndlrTbl, evId);
-	if(hnd < 1)	return kErr_EvQ_BadParm;					// not completely accurate return code, but MVP for now. could return more precise error codes if we did our own examination of the parameters.
+	if(hnd < 1)	{ return kErr_EvQ_BadParm; }				// not completely accurate return code, but MVP for now. could return more precise error codes if we did our own examination of the parameters.
 
 	// set event
 	pHndlrTbl->pEvtHndlrLut[hnd].evId = evId;
@@ -144,11 +145,11 @@ Cwsw_EvHA__SetEvHandler(
  *	@note This works at the level of the Event Handler Association table, not at the EvQX level.
  *	@ingroup tEvQ_EvHndlrAssocTable
  */
-pEvQ_EvHandlerFunc
+ptEvQ_EvHandlerFunc
 Cwsw_EvHA__GetEvHandler(ptEvQ_EvHndlrAssocTable pHndlrTbl,	tEvQ_EventID evId)
 {
 	tEvQ_EvtHandle hnd = GetTableHandle(pHndlrTbl, evId);	// validates both association table as well as event id
-	if(hnd < 1)	return NULL;
+	if(hnd < 1)	{ return NULL; }
 
 	// at this time, no confirmation of event ID (it could be thought of that this confirmation was done in the GetTableHandle() call above)
 	return pHndlrTbl->pEvtHndlrLut[hnd].pEvHandler;
