@@ -271,7 +271,7 @@ Cwsw_EvQ__PostEvent(ptEvQ_QueueCtrl pEvQ, tEvQ_Event ev)
 tErrorCodes_EvQ
 Cwsw_EvQ__GetEvent(ptEvQ_QueueCtrl pEvQ, ptEvQ_Event pEv)
 {
-	tErrorCodes_EvQ rc = kEvQ_Ev_None;
+	tErrorCodes_EvQ rc = kErr_EvQ_NoError;
 	tEvQ_EvtHandle idx = 0;
 	int crit = 0;
 
