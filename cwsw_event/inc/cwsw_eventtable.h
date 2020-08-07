@@ -1,13 +1,11 @@
 /** @file
-*	@brief	This module defines the table of events that is contained within an Event Queue object.
- *
+ *	@brief	This module defines the table of events that is contained within an Event Queue object.
  *
  *	\copyright
  *	Copyright (c) 2020 Kevin L. Becker. All rights reserved.
  *
- *	Original:
  *	Created on: Mar 7, 2020
- *	Author: Kevin
+ *	@author Kevin L. Becker
  */
 
 #ifndef CWSW_EVENTTABLE_H

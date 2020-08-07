@@ -1,5 +1,4 @@
 /** @file
- *
  *	@brief	Definition of the Event object.
  *	The Event object is the base type upon which the Event Queue and its extended forms is built.
  *
@@ -7,7 +6,7 @@
  *	Copyright (c) 2020 Kevin L. Becker. All rights reserved.
  *
  *	Created on: Feb 24, 2020
- *	@author: kbecker
+ *	@author Kevin L. Becker
  */
 
 #ifndef CWSW_EVENT_H

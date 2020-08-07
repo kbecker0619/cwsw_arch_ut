@@ -4,13 +4,12 @@
  *	\copyright
  *	Copyright (c) 2020 Kevin L. Becker. All rights reserved.
  *
- *	Original:
  *	Created on: Mar 2, 2018
- *	Author: kbecker
+ *	@author Kevin L. Becker
  */
 
-#ifndef CWSW_EVQ_PROJ_H_
-#define CWSW_EVQ_PROJ_H_
+#ifndef CWSW_EVQ_PROJ_H
+#define CWSW_EVQ_PROJ_H
 
 #ifdef	__cplusplus
 extern "C" {
@@ -94,4 +93,4 @@ typedef uint8_t tEvQ_EventID;
 }
 #endif
 
-#endif /* CWSW_EVQ_PROJ_H_ */
+#endif /* CWSW_EVQ_PROJ_H */

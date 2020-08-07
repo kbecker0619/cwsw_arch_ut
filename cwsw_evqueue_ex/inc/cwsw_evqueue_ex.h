@@ -1,14 +1,11 @@
-/** @file cwsw_evqueue_ex.h
+/** @file
  *	@brief	One-sentence short description of file.
- *
- *	Description:
  *
  *	\copyright
  *	Copyright (c) 2020 Kevin L. Becker. All rights reserved.
  *
- *	Original:
  *	Created on: Mar 15, 2020
- *	Author: kevin
+ *	@author Kevin L. Becker
  */
 
 #ifndef CWSW_EVQUEUE_EX_H

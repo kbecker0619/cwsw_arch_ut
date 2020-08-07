@@ -1,11 +1,11 @@
-/** @file CritSect.c
+/** @file
  *	@brief	Callbacks for Critical Section support
  *
  *	\copyright
  *	Copyright (c) 2020 Kevin L. Becker. All rights reserved.
  *
  *	Created on: Oct 15, 2019
- *	@author: kbecker
+ *	@author Kevin L. Becker
  */
 
 // ============================================================================
