@@ -17,8 +17,8 @@
 
 
 /* Within **this** file, we are doing a very basic check of the project-specific enter-exit-
- * critical-section implementation. As part of that, the `init` an `clean` suite actions will set up
- * the vars used by that module.
+ * critical-section implementation. As part of that, the `init` and `clean` suite actions will set
+ * up the vars used by that module.
  */
 extern bool crit_section_seen;
 extern int crit_sec_prot_lvl;
