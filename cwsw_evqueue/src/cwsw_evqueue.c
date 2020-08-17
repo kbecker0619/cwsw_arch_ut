@@ -126,9 +126,11 @@ Cwsw_EvQ__Get_Initialized(void)
  *	Each queue in your system needs initialization: The management functions
  *	need to know the size of this event buffer, and where the buffer is located.
  *
- * 	@param[out]	pEvQ	Reference to the Event Queue.
- *	@param[in] pEvTable	Pointer to the event table object.
- *						This is an independent object, not embedded into the EvQ control structure.
+ * 	@param[out]	pEvQ		Reference to the Event Queue.
+ *	@param[in]	pEvTable	Pointer to the event table object.
+ *							This is an independent object, not embedded into the EvQ control structure.
+ *	@param[in]	pEvBuff		Event table buffer.
+ *	@param[in]	szEvBuf		Size of Event Table buffer.
  *
  *	@returns			Error code, where 0 (#kErr_EvQ_NoError) is no error. In the event of an
  *						error return, no writes to any output parameter are performed.
