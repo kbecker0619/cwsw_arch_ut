@@ -65,7 +65,7 @@ uint16_t
 Cwsw_EvQ__Init(void)
 {
 	uint16_t ret = kErr_EvQ_NoError;
-	if( (XPRJ_Win_MinGW_Debug) || (XPRJ_Debug_Linux_GCC) || (XPRJ_Win_MSVC_Debug) )
+	if( (XPRJ_Win_MinGW_Debug) || (XPRJ_Lin_GCC_Debug) || (XPRJ_Win_MSVC_Debug) )
 	{
 		SUPPRESS_EXTRAISO_IDENT;	/* suppress warning for function name */
 
